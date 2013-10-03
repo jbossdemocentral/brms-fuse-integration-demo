@@ -1,5 +1,5 @@
-JBoss BRMS & JBoss Fuse Integration Demo
-========================================
+JBoss BRMS & Fuse Integration Demo
+==================================
 
 Demo based on JBoss BRMS/Fuse products.
 
