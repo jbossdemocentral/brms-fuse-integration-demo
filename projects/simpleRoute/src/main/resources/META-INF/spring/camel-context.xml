@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:cxf="http://camel.apache.org/schema/cxf" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd         http://camel.apache.org/schema/spring  http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring" trace="false">
+    <route id="my_Sample_Camel_Route_with_CXF">
+        <from uri="file:src/data?noop=true"/>
+        <log loggingLevel="INFO" message="&gt;&gt;&gt; ${body}"/>
+        <to uri="cxf://http://www.webservicex.net/stockquote.asmx?wsdlURL=src/main/resources/META-INF/stockquote.wsdl&amp;serviceName={http://www.webserviceX.NET/}StockQuote&amp;portName={http://www.webserviceX.NET/}StockQuoteSoap&amp;dataFormat=MESSAGE"/>
+        <log loggingLevel="INFO" message="&gt;&gt;&gt; ${body}"/>
+    </route>
+</camelContext>
+
+</beans>
