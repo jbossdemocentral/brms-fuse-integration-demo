@@ -3,10 +3,11 @@ DEMO="JBoss BRMS & Fuse Integration Demo"
 AUTHORS="Kenny Peeples, Eric D. Schabell"
 PROJECT="git@github.com:eschabell/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.1
+FUSE_HOME=./target/jboss-fuse-6.0.0.redhat-024
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
 SERVER_CONF=$JBOSS_HOME/standalone/configuration/
 SRC_DIR=./installs
-PRJ_DIR=./projects/brms-fuse-integration-demo
+PRJ_DIR=./projects/brms-fuse-integration
 FUSE=jboss-fuse-full-6.0.0.redhat-024.zip
 EAP=jboss-eap-6.1.0.zip
 BRMS=brms-p-5.3.1.GA-deployable-ee6.zip
@@ -93,18 +94,35 @@ if [ -x $JBOSS_HOME ]; then
 		mv $JBOSS_HOME $JBOSS_HOME.OLD
 
 		# Unzip the JBoss EAP instance.
-		echo Unpacking JBoss EAP ...
+		echo Unpacking JBoss EAP...
 		echo
 		unzip -q -d target $SRC_DIR/$EAP
 else
 		# Unzip the JBoss EAP instance.
-		echo Unpacking new JBoss EAP ...
+		echo Unpacking new JBoss EAP...
 		echo
 		unzip -q -d target $SRC_DIR/$EAP
 fi
 
-# Unzip Fuse into target.
-unzip -q -d target $SRC_DIR/$FUSE
+# Move the old Fuse instance, if it exists, to the OLD position.
+if [ -x $FUSE_HOME ]; then
+		echo "  - existing JBoss FUSE detected..."
+		echo
+		echo "  - moving existing JBoss FUSE aside..."
+		echo
+		rm -rf $FUSE_HOME.OLD
+		mv $FUSE_HOME $FUSE_HOME.OLD
+
+		# Unzip the JBoss FUSE instance.
+		echo Unpacking JBoss FUSE...
+		echo
+		unzip -q -d target $SRC_DIR/$FUSE
+else
+		# Unzip the JBoss FUSE instance.
+		echo Unpacking new JBoss FUSE...
+		echo
+		unzip -q -d target $SRC_DIR/$FUSE
+fi
 
 # Unzip the required files from JBoss BRMS Deployable
 echo Unpacking JBoss Enterprise BRMS $VERSION...
