@@ -18,6 +18,9 @@ MAVENIZE_VERSION=5.3.1.BRMS
 # wipe screen.
 clear 
 
+# add executeable in installs
+chmod +x installs/*.zip
+
 ##
 # Installation mavanization functions.
 ##

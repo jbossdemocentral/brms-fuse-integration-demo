@@ -14,10 +14,9 @@
 		<description>JBoss BRMS and Fuse Integration Demo</description>
 
 		<modules>
-			<module>simpleProxyWS</module>
-			<module>simpleRESTWS</module>
 			<module>simpleRoute</module>
-			<module>simpleSOAPWS</module>
+			<module>business process test</module>
+			<module>rulestest</module>
 		</modules>
 
 </project>
