@@ -15,6 +15,8 @@ Quickstart
 
 4. Enjoy the demo!
 
+Note: JBoss BRMS user logins are 'erics' with password 'erics', admin logins are 'admin' with password 'brmsfuse'.
+
 
 Released versions
 -----------------
@@ -23,10 +25,9 @@ See the tagged releases for the following versions of the product:
 
 - no release yet, still developing.
 
+
 Added
 ---------------------
-1. chmod +x on all files in the installs
-2. add-user.sh for management admin/redhat1!
 http://localhost:8080/business-central-server/rs/server/resources/jbpm
 http://localhost:8080/business-central-server/
 
