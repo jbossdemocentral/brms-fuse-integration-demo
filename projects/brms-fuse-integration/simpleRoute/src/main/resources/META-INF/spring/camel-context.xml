@@ -7,6 +7,11 @@
         <to uri="cxf://http://www.webservicex.net/stockquote.asmx?wsdlURL=src/main/resources/META-INF/stockquote.wsdl&amp;serviceName={http://www.webserviceX.NET/}StockQuote&amp;portName={http://www.webserviceX.NET/}StockQuoteSoap&amp;dataFormat=MESSAGE"/>
         <log loggingLevel="INFO" message="&gt;&gt;&gt; ${body}"/>
     </route>
+    
+    <route id="callbusinessprocess">
+    	<from uri="direct:start"/>
+    	<to uri="cxfrs://http://localhost:8080/business-central-server/rs/process/definition/com.sample.bpmn.hello/new_instance"/>
+    </route>
 </camelContext>
 
 </beans>

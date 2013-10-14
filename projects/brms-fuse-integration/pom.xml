@@ -15,8 +15,7 @@
 
 		<modules>
 			<module>simpleRoute</module>
-			<module>business process test</module>
-			<module>rulestest</module>
+			<module>processtest</module>
 		</modules>
 
 </project>
