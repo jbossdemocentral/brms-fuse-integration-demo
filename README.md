@@ -3,6 +3,7 @@ JBoss BRMS & Fuse Integration Demo
 
 Demo based on JBoss BRMS/Fuse products.
 
+Currently in process.  Initial release available after 10/21.
 
 Quickstart
 ----------
