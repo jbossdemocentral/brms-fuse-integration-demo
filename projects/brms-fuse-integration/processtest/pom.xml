@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>Business Process</name>
+  <name>BRMS POM</name>
   <url>http://www.myorganization.org</url>
 
   <properties>
