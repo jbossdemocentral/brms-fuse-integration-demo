@@ -172,6 +172,10 @@ echo "  - enabling demo accounts role setup in brms-roles.properties file..."
 echo
 cp support/brms-roles.properties $SERVER_CONF
 
+echo "  - enabling admin account setup on server..."
+echo
+cp support/mgmt-users.properties $SERVER_CONF
+
 echo "  - adding dodeploy files to deploy all brms components..."
 echo 
 touch $SERVER_DIR/business-central-server.war.dodeploy
