@@ -3,9 +3,10 @@ JBoss BRMS & Fuse Integration Demo
 
 Demo based on JBoss BRMS/Fuse products.
 
-
-Quickstart
+Setup and Configuration
 ----------
+
+See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
 
 1. Clone project.
 
@@ -13,9 +14,21 @@ Quickstart
 
 3. Run 'init.sh'
 
+4. Read the documents in docs directory.
+
 4. Enjoy the demo!
 
+Detailed documentation and presentations can be found in docs directory.
+
 Note: JBoss BRMS user logins are 'erics' with password 'erics', admin logins are 'admin' with password 'brmsfuse'.
+
+
+Supporting Articles
+-------------------
+
+[Enhancing your JBoss Integration with JBoss BRMS in Practice] ()
+
+[Enhancing your JBoss Integration with JBoss BRMS] (http://www.schabell.org/2013/08/enhancing-jboss-integration-jboss-fuse-brms.html)
 
 
 Released versions
@@ -23,24 +36,6 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
-- no release yet, still developing.
 
+- v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
 
-Added
----------------------
-http://localhost:8080/business-central-server/rs/server/resources/jbpm
-http://localhost:8080/business-central-server/
-
-http://localhost:8080/jbpm-human-task/ 404 error
-http://localhost:8080/designer 404 error
-process engine plugin not available http://localhost:8080/business-central-server/rs/engine/deployments
-so we can execute /business-central-server/rs/engine/job/{id}/execute
-http://localhost:8080/business-central-server/rs/server/status
-{"plugins":[{"type":"org.jboss.bpm.console.server.plugin.FormDispatcherPlugin","available":true},{"type":"org.jboss.bpm.console.server.plugin.GraphViewerPlugin","available":true},{"type":"org.jboss.bpm.console.server.plugin.ProcessEnginePlugin","available":false}]
-
-/designer
-01:01:36,747 INFO  [org.jboss.web] (ServerService Thread Pool -- 69) JBAS018224: Unregister web context: /jboss-brms
-01:01:36,749 INFO  [org.jboss.web] (ServerService Thread Pool -- 68) JBAS018224: Unregister web context: /jbpm-human-task
-01:01:36,751 INFO  [org.jboss.web] (ServerService Thread Pool -- 67) JBAS018224: Unregister web context: /business-central-server
-01:01:36,752 INFO  [org.jboss.web] (ServerService Thread Pool -- 70) JBAS018224: Unregister web context: /business-central
-}
