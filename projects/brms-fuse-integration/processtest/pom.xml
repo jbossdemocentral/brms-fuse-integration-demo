@@ -16,6 +16,37 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+       	<enabled>true</enabled>
+      </releases>
+    </repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
   <dependencies>
     <dependency>
@@ -89,13 +120,9 @@
         <version>4.7</version>
     </dependency>
     <dependency>
-	<groupId>org.jbpm</groupId>
-	<artifactId>jbpm-test</artifactId>
-	<version>5.4.0.Final</version>
-</dependency>
-            
-
-  </dependencies>
-
-
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<version>5.4.0.Final</version>
+		</dependency>
+	</dependencies>
 </project>
