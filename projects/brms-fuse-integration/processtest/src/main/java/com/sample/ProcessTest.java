@@ -12,11 +12,11 @@ public class ProcessTest extends JbpmJUnitTestCase {
 
 	@Test
 	public void testProcess() {
-		StatefulKnowledgeSession ksession = createKnowledgeSession("sample.bpmn");
+		StatefulKnowledgeSession ksession = createKnowledgeSession("Process For Camel.bpmn");
 		ProcessInstance processInstance = ksession.startProcess("com.sample.bpmn.hello");
 		// check whether the process instance has completed successfully
 		assertProcessInstanceCompleted(processInstance.getId(), ksession);
-		assertNodeTriggered(processInstance.getId(), "Hello");
+		assertNodeTriggered(processInstance.getId(), "Hello Task");
 	}
 
 }
