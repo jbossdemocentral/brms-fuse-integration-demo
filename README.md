@@ -26,8 +26,6 @@ Note: JBoss BRMS user logins are 'erics' with password 'erics', admin logins are
 Supporting Articles
 -------------------
 
-[Enhancing your JBoss Integration with JBoss BRMS in Practice] ()
-
 [Enhancing your JBoss Integration with JBoss BRMS] (http://www.schabell.org/2013/08/enhancing-jboss-integration-jboss-fuse-brms.html)
 
 
@@ -39,3 +37,6 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
 
+![Install Console] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/install-console.png)
+
+![Fuse Service Task] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/fuse-domain-specific-node.png)
