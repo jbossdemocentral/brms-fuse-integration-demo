@@ -2,7 +2,7 @@ Download the following from the JBoss Customer Portal
 
  * BRMS (brms-p-5.3.1.GA-deployable-ee6.zip)	
  * EAP (jboss-eap-6.1.0.zip)
- * Fuse (jboss-fuse-full-6.0.0.redhat-024.zip)
+ * Fuse (jboss-fuse-full-6.1.0.redhat-379.zip)
 
 and copy to this directory for the init.sh script to work.
 
@@ -10,5 +10,5 @@ Ensure that this file is executable by running:
 
 chmod +x <path-to-project>/installs/brms-p-5.3.1.GA-deployable-ee6.zip
 chmod +x <path-to-project>/installs/brms-eap-6.1.0.zip
-chmod +x <path-to-project>/installs/jboss-fuse-full-6.0.0.redhat-024.zip
+chmod +x <path-to-project>/installs/jboss-fuse-full-6.1.0.redhat-379.zip
 
