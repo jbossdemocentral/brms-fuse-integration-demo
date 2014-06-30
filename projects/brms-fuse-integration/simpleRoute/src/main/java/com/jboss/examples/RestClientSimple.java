@@ -1,7 +1,6 @@
 package com.jboss.examples;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,14 +12,6 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
-import org.jboss.bpm.console.client.model.ProcessDefinitionRef;
-import org.jboss.bpm.console.client.model.ProcessDefinitionRefWrapper;
-import org.jboss.bpm.console.client.model.ProcessInstanceRef;
-import org.jboss.bpm.console.client.model.ProcessInstanceRefWrapper;
-import org.jboss.bpm.console.client.model.TaskRef;
-import org.jboss.bpm.console.client.model.TaskRefWrapper;
-
-import com.google.gson.Gson;
 
 /**
  * Starting an instance of the process, without submitting any variables in a map.
