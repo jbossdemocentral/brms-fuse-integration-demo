@@ -173,8 +173,13 @@
       <artifactId>gson</artifactId>
       <version>2.2.4</version>
       <scope>compile</scope>
-    </dependency> 
+    </dependency>
 
+    <dependency>
+    	<groupId>customer</groupId>
+    	<artifactId>evaluation</artifactId>
+    	<version>1.0</version>
+    </dependency>
   </dependencies>
 
   <build>

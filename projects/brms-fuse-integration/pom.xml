@@ -15,7 +15,6 @@
 
 		<modules>
 			<module>simpleRoute</module>
-			<module>processtest</module>
 		</modules>
 
 </project>

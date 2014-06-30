@@ -1,6 +1,5 @@
 package com.jboss.examples;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,102 +23,102 @@ import org.jboss.bpm.console.client.model.TaskRefWrapper;
 import com.google.gson.Gson;
 
 /**
- * Hello world!
+ * Starting an instance of the process, without submitting any variables in a map.
  * 
  */
 public class RestClientSimple {
-    private static final String BASE_URL = "http://localhost:8080/business-central-server/rs/";
-    private static final String AUTH_URL = BASE_URL + "identity/secure/j_security_check";
-    private final String username;
-    private final String password;
-
-    //private static final String PROCESS_ID = "defaultPackage.hello";
-    private static final String PROCESS_ID = "com.sample.bpmn.hello";
-
-    public RestClientSimple(final String u, final String p) {
-        this.username = u;
-        this.password = p;
-    }
-    public RestClientSimple() {
-        this.username = "admin";
-        this.password = "admin";
-    }
+    private static final String BASE_URL = "http://localhost:8080/business-central/rest/";
+    private static final String DEPLOYMENT_ID = "cusotmer:evaluation:1.0";
+    private static final String PROCESS_DEF_ID = "customer.evaluation";
 
     public static void main(String[] args) throws Exception {
 
-        RestClientSimple client = new RestClientSimple("admin", "admin");
-
-        // get process definitions
-        ProcessDefinitionRefWrapper processDefinitionWrapper = client.getProcessDefinitions(client);
-
-        // pick up "org.jbpm.approval.rewards"
-        ProcessDefinitionRef definitionRef = null;
-        for (ProcessDefinitionRef processDefinitionRef : processDefinitionWrapper.getDefinitions()) {
-            if (processDefinitionRef.getId().equals(PROCESS_ID)) {
-                definitionRef = processDefinitionRef;
-                break;
-            }
-        }
-        if (definitionRef == null) {
-            System.out.println(PROCESS_ID + " doesn't exist");
-            return;
-        }
-
-        // start a process instance
-        ProcessInstanceRef processInstanceRef = client.startProcess(client, definitionRef);
-
-    }
-
-    public void startProcessFromCamel()
-    {
-        RestClientSimple client = new RestClientSimple();
-        try
-        {
-        // get process definitions
-        ProcessDefinitionRefWrapper processDefinitionWrapper = client.getProcessDefinitions(client);
-        // pick up "org.jbpm.approval.rewards"
-        ProcessDefinitionRef definitionRef = null;
-        for (ProcessDefinitionRef processDefinitionRef : processDefinitionWrapper.getDefinitions()) {
-            if (processDefinitionRef.getId().equals(PROCESS_ID)) {
-                definitionRef = processDefinitionRef;
-                break;
-            }
-        }
-        if (definitionRef == null) {
-            System.out.println(PROCESS_ID + " doesn't exist");
-            return;
-        }
-        // start a process instance
-        Map<String,String> fromCamel = new HashMap<String,String>();
-        fromCamel.put("stock","RHT");
-        fromCamel.put("Price",  "50");
-        //client.startProcessWithParameters(client, definitionRef, fromCamel);
-        ProcessInstanceRef processInstanceRef = client.startProcess(client, definitionRef);
+    	System.out.println("Starting process instance: " + DEPLOYMENT_ID);
+        System.out.println();
         
-        } catch (Exception e) {
-        	System.out.println("Error Calling BRMS " + e.getMessage() );
-        	e.printStackTrace();
-        }
+    	// start a process instance with no variables.
+        startProcess();
+
+        System.out.println();
+    	System.out.println("Completed process instance: " + DEPLOYMENT_ID);
     }
+
+    /**
+     * Start a process using the rest api start call, no map variables passed.
+     * 
+     * @throws Exception
+     */
+    private static void startProcess() throws Exception {
+        String newInstanceUrl = BASE_URL + "runtime/" + DEPLOYMENT_ID + "/process/" + PROCESS_DEF_ID + "/start";
+        String dataFromService = getDataFromService(newInstanceUrl, "POST");
+        System.out.println("--------");
+        System.out.println(dataFromService);
+        System.out.println("--------");
+    }
+
+
+    /**
+     * Returns data from a service call (GET).
+     * 
+     * @param urlpath Rest API call.
+     * @param method Post or Get call.
+     * @return
+     * @throws Exception
+     */
+    private static String getDataFromService(String urlpath, String method) throws Exception {
+        // no params
+        return getDataFromService(urlpath, method, null, false);
+    }
+
+//    public void startProcessFromCamel()
+//    {
+//        try
+//        {
+//        // get process definitions
+//        ProcessDefinitionRefWrapper processDefinitionWrapper = getProcessDefinitions();
+//        // pick up "org.jbpm.approval.rewards"
+//        ProcessDefinitionRef definitionRef = null;
+//        for (ProcessDefinitionRef processDefinitionRef : processDefinitionWrapper.getDefinitions()) {
+//            if (processDefinitionRef.getId().equals(PROCESS_ID)) {
+//                definitionRef = processDefinitionRef;
+//                break;
+//            }
+//        }
+//        if (definitionRef == null) {
+//            System.out.println(PROCESS_ID + " doesn't exist");
+//            return;
+//        }
+//        // start a process instance
+//        Map<String,String> fromCamel = new HashMap<String,String>();
+//        fromCamel.put("stock","RHT");
+//        fromCamel.put("Price",  "50");
+//        //client.startProcessWithParameters(client, definitionRef, fromCamel);
+//        ProcessInstanceRef processInstanceRef = startProcess(definitionRef);
+//        
+//        } catch (Exception e) {
+//        	System.out.println("Error Calling BRMS " + e.getMessage() );
+//        	e.printStackTrace();
+//        }
+//    }
     
-    private void claimTask(RestClientSimple client, long taskId, String actorId) throws Exception {
+    private void claimTask(long taskId, String actorId) throws Exception {
         String claimTaskUrl = BASE_URL + "task/" + taskId + "/assign/" + actorId;
-        String dataFromService = client.getDataFromService(claimTaskUrl, "POST", null, false);
+        String dataFromService = getDataFromService(claimTaskUrl, "POST", null, false);
         System.out.println(dataFromService);
     }
 
-    private void completeTask(RestClientSimple client, long taskId, Map<String, String> params) throws Exception {
+    private void completeTask(long taskId, Map<String, String> params) throws Exception {
         String completeTaskUrl = BASE_URL + "form/task/" + taskId + "/complete";
-        String dataFromService = client.getDataFromService(completeTaskUrl, "POST", params, true);
+        String dataFromService = getDataFromService(completeTaskUrl, "POST", params, true);
         System.out.println(dataFromService);
 
         return;
 
     }
 
-    private List<TaskRef> getTaskListForPotentialOwner(RestClientSimple client, String actorId) throws Exception {
+    private List<TaskRef> getTaskListForPotentialOwner(String actorId) throws Exception {
         String getTaskListUrl = BASE_URL + "tasks/" + actorId + "/participation";
-        String dataFromService = client.getDataFromService(getTaskListUrl, "GET");
+        String dataFromService = getDataFromService(getTaskListUrl, "GET");
         System.out.println(dataFromService);
 
         Gson gson = GsonFactory.createInstance();
@@ -130,10 +129,10 @@ public class RestClientSimple {
         return taskList;
     }
 
-    private ProcessInstanceRef getLatestProcessInstance(RestClientSimple client, ProcessDefinitionRef def)
+    private ProcessInstanceRef getLatestProcessInstance(ProcessDefinitionRef def)
             throws Exception {
         String getInstanceUrl = BASE_URL + "process/definition/" + def.getId() + "/instances";
-        String dataFromService = client.getDataFromService(getInstanceUrl, "GET");
+        String dataFromService = getDataFromService(getInstanceUrl, "GET");
         System.out.println(dataFromService);
 
         Gson gson = GsonFactory.createInstance();
@@ -148,23 +147,9 @@ public class RestClientSimple {
         return null;
     }
 
-    private ProcessInstanceRef startProcess(RestClientSimple client, ProcessDefinitionRef def) throws Exception {
-        String newInstanceUrl = BASE_URL + "process/definition/" + def.getId() + "/new_instance";
-        String dataFromService = client.getDataFromService(newInstanceUrl, "POST");
-        System.out.println("--------");
-        System.out.println(dataFromService);
-        System.out.println("--------");
-
-        Gson gson = GsonFactory.createInstance();
-        ProcessInstanceRef processInstanceRef = gson.fromJson(dataFromService, ProcessInstanceRef.class);
-
-        return processInstanceRef;
-    }
-
-    private void startProcessWithParameters(RestClientSimple client, ProcessDefinitionRef def,
-            Map<String, String> params) throws Exception {
+    private void startProcessWithParameters(ProcessDefinitionRef def, Map<String, String> params) throws Exception {
         String newInstanceUrl = BASE_URL + "form/process/" + def.getId() + "/complete";
-        String dataFromService = client.getDataFromService(newInstanceUrl, "POST", params, true);
+        String dataFromService = getDataFromService(newInstanceUrl, "POST", params, true);
         System.out.println("--------");
         System.out.println(dataFromService); // BZ871302 : cannot get
                                              // processInstanceId from response
@@ -173,27 +158,22 @@ public class RestClientSimple {
         return;
     }
 
-    private ProcessDefinitionRefWrapper getProcessDefinitions(RestClientSimple client) throws Exception {
-        String newInstanceUrl = BASE_URL + "process/definitions";
-        String dataFromService = client.getDataFromService(newInstanceUrl, "GET");
+    private static ProcessDefinitionRefWrapper getProcessDefinitions() throws Exception {
+        String newInstanceUrl = BASE_URL + "deployment";
+        String dataFromService = getDataFromService(newInstanceUrl, "GET");
         System.out.println(dataFromService);
 
         Gson gson = new Gson();
         ProcessDefinitionRefWrapper wrapper = gson.fromJson(dataFromService, ProcessDefinitionRefWrapper.class);
 
         for (ProcessDefinitionRef ref : wrapper.getDefinitions()) {
-            System.out.println("process ID is: " + ref.getId());
+            System.out.println("process deploymnet ID is: " + ref.getDeploymentId());
         }
 
         return wrapper;
     }
 
-    private String getDataFromService(String urlpath, String method) throws Exception {
-        // no params
-        return getDataFromService(urlpath, method, null, false);
-    }
-
-    private String getDataFromService(String urlpath, String method, Map<String, String> params, boolean multipart)
+    private static String getDataFromService(String urlpath, String method, Map<String, String> params, boolean multipart)
             throws Exception {
         HttpClient httpclient = new HttpClient();
 
@@ -226,33 +206,7 @@ public class RestClientSimple {
             }
 
         }
-
-        if (username != null && password != null) {
-
-            try {
-                int result = httpclient.executeMethod(theMethod);
-                System.out.println("Call " + theMethod.getURI()+" :: result = " + result);
-                System.out.println(theMethod.getResponseBodyAsString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                theMethod.releaseConnection();
-            }
-            PostMethod authMethod = new PostMethod(AUTH_URL);
-            NameValuePair[] data = { new NameValuePair("j_username", username),
-                    new NameValuePair("j_password", password) };
-            authMethod.setRequestBody(data);
-            try {
-                int result = httpclient.executeMethod(authMethod);
-                System.out.println("Call " + authMethod.getURI()+" :: result = " + result);
-                System.out.println(theMethod.getResponseBodyAsString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                authMethod.releaseConnection();
-            }
-        }
-
+       
         try {
             int result = httpclient.executeMethod(theMethod);
             System.out.println("Call " + theMethod.getURI()+" :: result = " + result);

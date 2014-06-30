@@ -147,9 +147,9 @@ echo "  - enabling management accounts login setup in mgmt-users.properties file
 echo
 cp $SUPPORT_DIR/mgmt-users.properties $SERVER_CONF
 
-#echo "  - setting up demo projects..."
-#echo
-#cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
+echo "  - setting up demo projects..."
+echo
+cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
 
 echo "  - setting up standalone.xml configuration adjustments..."
 echo
@@ -175,7 +175,7 @@ echo
 echo "You can now start the JBoss BPM Suite with $SERVER_BIN/standalone.sh"
 echo
 
-echo "You can start the JBoss Fuse with $FUSE_BIN/start"
+echo "You can start the JBoss Fuse with $FUSE_BIN/fuse"
 
 echo "$PRODUCT $VERSION $DEMO Setup Complete."
 echo
