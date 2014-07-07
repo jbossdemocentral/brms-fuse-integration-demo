@@ -1,7 +1,16 @@
-JBoss BRMS & Fuse Integration Demo
-==================================
+JBoss BPM Suite & Fuse Integration Demo
+=======================================
 
-Demo based on JBoss BRMS/Fuse products.
+Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases.
+
+  * call a BPM process from a fuse camel route.
+
+  * TODO: call a fuse end point from a BPM process.
+
+  * TODO: embed a rule decision into a fuse camel route.
+
+  * TODO: embed a process into a fuse camel route.
+
 
 Setup and Configuration
 ----------
@@ -14,13 +23,15 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 3. Run 'init.sh'
 
-4. Read the documents in docs directory.
+4. Start, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
 
-4. Enjoy the demo!
+5. Start, login, deploy camel route in JBoss BPM Fuse. (TODO: Christina, we need to document how this is done.)
+
+6. Enjoy the demo!
 
 Detailed documentation and presentations can be found in docs directory.
 
-Note: JBoss BRMS user logins are 'erics' with password 'erics', admin logins are 'admin' with password 'brmsfuse'.
+Note: JBoss BPM Suite user login (u:erics/p:bpmsuite), for Fuse the login (u:admin/p:brmsfuse).
 
 
 Supporting Articles
@@ -33,7 +44,6 @@ Released versions
 -----------------
 
 See the tagged releases for the following versions of the product:
-
 
 - v2.0 is JBoss BPM Suite 6.0.2 deployable, running on JBoss EAP 6.1.1, and JBoss Fuse Full 6.1.0, with route and process
 	integration project deployed.
