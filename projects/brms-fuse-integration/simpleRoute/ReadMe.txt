@@ -9,7 +9,7 @@ To run this project with Maven use
 
     mvn camel:run
 
-Depends on BRMS Business Process
+Depends on BPM Process
 
 For more help see the Apache Camel documentation
 
