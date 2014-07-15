@@ -11,7 +11,7 @@ Setup and Configuration
 
 See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
 
-1. [Download and unzip.](https://github.com/eschabell/brms-fuse-integration-demo/archive/fuse-6.1.0.zip)
+1. [Download and unzip.](https://github.com/eschabell/brms-fuse-integration-demo/archive/master.zip)
 
 2. Add products to installs directory.
 
