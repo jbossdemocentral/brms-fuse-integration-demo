@@ -1,6 +1,6 @@
 #!/bin/sh 
 DEMO="JBoss BRMS & Fuse Integration Demo"
-AUTHORS="Kenny Peeples, Eric D. Schabell"
+AUTHORS="Christina Lin, Eric D. Schabell"
 PROJECT="git@github.com:eschabell/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.1
 FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
@@ -176,7 +176,8 @@ echo "You can now start the JBoss BPM Suite with $SERVER_BIN/standalone.sh"
 echo
 
 echo "You can start the JBoss Fuse with $FUSE_BIN/fuse"
+echo
 
-echo "$PRODUCT $VERSION $DEMO Setup Complete."
+echo "$DEMO Setup Complete."
 echo
 
