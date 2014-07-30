@@ -17,9 +17,9 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 3. Run 'init.sh'.
 
-4. Start, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
+4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
 
-5. Start, login, deploy camel route in JBoss BPM Fuse or run 'mvn camel:run' from projects/brms-fuse-integration/simpleRoute.
+5. Start the Fuse server, login, deploy camel route in JBoss BPM Fuse or run 'mvn camel:run' from projects/brms-fuse-integration/simpleRoute.
 
 6. Enjoy the demo!
 
