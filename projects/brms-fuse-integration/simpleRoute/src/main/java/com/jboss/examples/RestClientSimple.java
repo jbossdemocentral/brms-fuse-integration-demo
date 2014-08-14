@@ -1,17 +1,14 @@
 package com.jboss.examples;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.UsernamePasswordCredentials;
+import org.apache.commons.httpclient.auth.AuthScope;
+import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
-import org.apache.commons.httpclient.methods.multipart.Part;
-import org.apache.commons.httpclient.methods.multipart.StringPart;
 
 /**
  * Starting an instance of the process, without submitting any variables in a map.
@@ -19,8 +16,13 @@ import org.apache.commons.httpclient.methods.multipart.StringPart;
  */
 public class RestClientSimple {
     private static final String BASE_URL = "http://localhost:8080/business-central/rest/";
-    private static final String DEPLOYMENT_ID = "cusotmer:evaluation:1.0";
+    private static final String AUTH_URL = "http://localhost:8080/business-central/org.kie.workbench.KIEWebapp/j_security_check";
+    private static final String DEPLOYMENT_ID = "customer:evaluation:1.0";
     private static final String PROCESS_DEF_ID = "customer.evaluation";
+    
+    private static String username = "erics";
+    private static String password = "bpmsuite";
+    private static AuthenticationType type = AuthenticationType.FORM_BASED;
 
     public static void main(String[] args) throws Exception {
 
@@ -39,9 +41,10 @@ public class RestClientSimple {
      * 
      * @throws Exception
      */
-    private static void startProcess() throws Exception {
+   public static void startProcess() throws Exception {
         String newInstanceUrl = BASE_URL + "runtime/" + DEPLOYMENT_ID + "/process/" + PROCESS_DEF_ID + "/start";
         String dataFromService = getDataFromService(newInstanceUrl, "POST");
+        System.out.println("newInstanceUrl:["+newInstanceUrl+"]");
         System.out.println("--------");
         System.out.println(dataFromService);
         System.out.println("--------");
@@ -59,65 +62,91 @@ public class RestClientSimple {
     private static String getDataFromService(String urlpath, String method) throws Exception {
         // no params
         return getDataFromService(urlpath, method, null, false);
+    	
+    	
+    	
     }
-
-    /**
-     * Call service (GET) with variables (Map).
-     * 
-     * @param urlpath
-     * @param method
-     * @param params
-     * @param multipart
-     * @return
-     * @throws Exception
-     */
-    private static String getDataFromService(String urlpath, String method, Map<String, String> params, boolean multipart)
-            throws Exception {
+    
+    
+    
+    private static void doAuthorization2( String url, HttpClient httpclient, PostMethod method) {
+    	httpclient.getState().setCredentials(
+    			new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, AuthScope.ANY_REALM),
+    			new UsernamePasswordCredentials(username, password)
+    			
+        	);
+        	method.setDoAuthentication(true);
+        	httpclient.getParams().setAuthenticationPreemptive(true);
+    }
+    
+    
+    
+	public static String getDataFromService(String urlpath, String method, Map<String, String> params, boolean multipart){
+		boolean handleException = false;
+    	// extract required parameters
+        String urlStr = urlpath;
+        String result = "";
+        
+        if (urlStr == null) {
+            throw new IllegalArgumentException("Url is a required parameter");
+        }
+        if (method == null || method.trim().length() == 0) {
+        	method = "GET";
+        }
+        
         HttpClient httpclient = new HttpClient();
-
-        HttpMethod theMethod = null;
-        StringBuffer sb = new StringBuffer();
-
-        if ("GET".equalsIgnoreCase(method)) {
-            theMethod = new GetMethod(urlpath);
-        } else if ("POST".equalsIgnoreCase(method)) {
-            theMethod = new PostMethod(urlpath);
-
-            if (params != null) {
-
-                if (multipart) {
-                    List<Part> parts = new ArrayList<Part>();
-                    for (String key : params.keySet()) {
-                        StringPart stringPart = new StringPart(key, params.get(key));
-                        stringPart.setCharSet("UTF-8");
-                        parts.add(stringPart);                    }
-                    ((PostMethod) theMethod).setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[0]),
-                            theMethod.getParams()));
-                } else {
-
-                    List<NameValuePair> NameValuePairList = new ArrayList<NameValuePair>();
-                    for (String key : params.keySet()) {
-                        NameValuePairList.add(new NameValuePair(key, params.get(key)));
-                    }
-                    ((PostMethod) theMethod).setRequestBody(NameValuePairList.toArray(new NameValuePair[0]));
-                }
-            }
-
-        }
-       
+        
+        httpclient.getHttpConnectionManager().getParams().setConnectionTimeout(3000);
+        httpclient.getHttpConnectionManager().getParams().setSoTimeout(3000);
+        httpclient.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+        
+        PostMethod theMethod = null;
+        theMethod = new PostMethod(urlpath);
+        theMethod.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);
+        
+        doAuthorization2(urlpath,httpclient, theMethod);
+        
         try {
-            int result = httpclient.executeMethod(theMethod);
-            System.out.println("Call " + theMethod.getURI()+" :: result = " + result);
-            sb.append(theMethod.getResponseBodyAsString());
-            String rawResult = sb.toString();
-            return rawResult;
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            theMethod.releaseConnection();
-        }
-
+        	
+        	Header[] headers = theMethod.getRequestHeaders();            
+            for(Header header:headers){
+            	System.out.println(header.getName()+":["+header.getValue()+"]");	
+            }
+            
+        	int responseCode = httpclient.executeMethod(theMethod);
+        	System.out.println("Call Restful API again authMethod responseCode:["+responseCode+"] ");
+        	
+        	
+	        Map<String, Object> results = new HashMap<String, Object>();
+	        if (responseCode >= 200 && responseCode < 300) {
+	        	result = theMethod.getResponseBodyAsString();
+	        	
+	            System.out.println("Ssuccessfully completed :[" + result+"]");
+	        } else {
+	        	if (handleException) {
+	        		System.out.println("handleException responseCode:["+responseCode+"] theMethod.getResponseBodyAsString():["+theMethod.getResponseBodyAsString()+"] urlStr:["+urlStr+"]");
+	        		
+	        	} else {
+	        		
+	        		System.out.println("Unsuccessful responseCode:["+responseCode+"] theMethod.getResponseBodyAsString():["+theMethod.getResponseBodyAsString()+"] urlStr:["+urlStr+"]");        		
+		            results.put("StatusMsg", "endpoint " + urlStr + " could not be reached: " + theMethod.getResponseBodyAsString());
+	        	}
+	        }
+            results.put("Status", responseCode);
+            
+	       
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	} finally {
+    		theMethod.releaseConnection();
+    	}
+        return result;
     }
-
+	
+	
+    
+    public enum AuthenticationType {
+    	BASIC,
+    	FORM_BASED
+    }
 }

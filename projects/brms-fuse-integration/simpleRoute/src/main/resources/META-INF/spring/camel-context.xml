@@ -8,9 +8,9 @@
     <route id="my_Sample_Camel_Route_with_CXF">
         <from uri="file:src/data?noop=true"/>
         <log message="&gt;&gt;&gt; ${body}" loggingLevel="INFO"/>
-        <to uri="cxf://http://www.webservicex.net/stockquote.asmx?wsdlURL=src/main/resources/META-INF/stockquote.wsdl&amp;serviceName={http://www.webserviceX.NET/}StockQuote&amp;portName={http://www.webserviceX.NET/}StockQuoteSoap&amp;dataFormat=MESSAGE"/>
+        <to uri="cxf://http://www.webservicex.net/stockquote.asmx?wsdlURL=META-INF/stockquote.wsdl&amp;serviceName={http://www.webserviceX.NET/}StockQuote&amp;portName={http://www.webserviceX.NET/}StockQuoteSoap&amp;dataFormat=MESSAGE"/>
         <log message="&gt;&gt;&gt; ${body}" loggingLevel="INFO"/>
-        <to uri="bean:startit?method=startProcessFromCamel"/>
+        <to uri="bean:startit?method=startProcess"/>
         <log message="&gt;&gt;&gt; ${body}" loggingLevel="INFO"/>
     </route>
 </camelContext>

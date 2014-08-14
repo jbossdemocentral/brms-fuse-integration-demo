@@ -23,9 +23,34 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 6. Enjoy the demo!
 
+
+Deploy camel route in JBoss Fuse
+--------------------------------
+A. Add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml file the fabric server's user and password so that the maven plugin can login to the fabric.
+<server>
+  <id>fabric8.upload.repo</id>
+  <username>admin</username>
+  <password>admin</password>
+</server> 
+
+
+B. Start Fuse Server,  
+	run 'fuse' under target/jboss-fuse-6.1.0.redhat-379/bin directory
+
+C. Start up fabric in fuse console:
+	fabric:create --wait-for-provisioning 
+
+D. Run 'mvn fabric8:deploy' from projects/brms-fuse-integration/simpleRoute.
+
+E. Create container name c1 and add BPMSuiteFuse profile
+![Fuse Service Task] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/container.png)
+
+F. Trigger camel route by placing message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder
+![Fuse Service Task] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
+
 Detailed documentation and presentations can be found in docs directory.
 
-Note: JBoss BPM Suite user login (u:erics/p:bpmsuite), for Fuse the login (u:admin/p:brmsfuse).
+Note: JBoss BPM Suite user login (u:erics/p:bpmsuite), for Fuse the login (u:admin/p:admin).
 
 Coming soon:
 
