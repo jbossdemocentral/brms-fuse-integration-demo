@@ -7,6 +7,7 @@ FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
 FUSE_BIN=$FUSE_HOME/bin
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
 SERVER_CONF=$JBOSS_HOME/standalone/configuration/
+SERVER_CONF_FUSE=$FUSE_HOME/etc/
 SERVER_BIN=$JBOSS_HOME/bin
 SRC_DIR=./installs
 PRJ_DIR=./projects/brms-fuse-integration
@@ -158,6 +159,10 @@ cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
 echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
+
+echo "  - enabling demo accounts logins in users.properties file..."
+echo
+cp $SUPPORT_DIR/users.properties $SERVER_CONF_FUSE
 
 # Optional: uncomment this to install mock data for BPM Suite.
 #
