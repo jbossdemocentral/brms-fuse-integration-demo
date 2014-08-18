@@ -87,54 +87,32 @@ if [ ! -x target ]; then
 		echo
 		mkdir target
 else
-		echo "  - detected target directory, moving on..."
+		echo "  - detected target directory, removed contents..."
+		rm -rf target
+		mkdir target
 		echo
 fi
 
-# Move the old JBoss instance, if it exists, to the OLD position.
-if [ -x $JBOSS_HOME ]; then
-		echo "  - existing JBoss EAP detected..."
-		echo
-		echo "  - moving existing JBoss EAP aside..."
-		echo
-		rm -rf $JBOSS_HOME.OLD
-		mv $JBOSS_HOME $JBOSS_HOME.OLD
+if [ -x target ]; then
+  # Unzip the JBoss EAP instance.
+  echo Installing JBoss EAP $EAP_VERSION
+  echo
+  unzip -q -d target $SRC_DIR/$EAP
 
-		# Unzip the JBoss EAP instance.
-		echo Installing JBoss EAP $EAP_VERSION
-		echo
-		unzip -q -d target $SRC_DIR/$EAP
+  # Unzip the JBoss FUSE instance.
+  echo Installing JBoss FUSE $FUSE_VERSION
+  echo
+  unzip -q -d target $SRC_DIR/$FUSE
+
+  # Unzip the required files from JBoss product deployable.
+  echo Installing JBoss BPM Suite $BPM_VERSION
+  echo
+  unzip -q -o -d target $SRC_DIR/$BPMS
 else
-		# Unzip the JBoss EAP instance.
-		echo Installing JBoss EAP $EAP_VERSION
-		echo
-		unzip -q -d target $SRC_DIR/$EAP
+	echo Missing target directory, stopping installation.
+	echo 
+	exit
 fi
-
-# Move the old Fuse instance, if it exists, to the OLD position.
-if [ -x $FUSE_HOME ]; then
-		echo "  - existing JBoss FUSE detected..."
-		echo
-		echo "  - moving existing JBoss FUSE aside..."
-		echo
-		rm -rf $FUSE_HOME.OLD
-		mv $FUSE_HOME $FUSE_HOME.OLD
-
-		# Unzip the JBoss FUSE instance.
-		echo Installing JBoss FUSE $FUSE_VERSION
-		echo
-		unzip -q -d target $SRC_DIR/$FUSE
-else
-		# Unzip the JBoss FUSE instance.
-		echo Installing JBoss FUSE $FUSE_VERSION
-		echo
-		unzip -q -d target $SRC_DIR/$FUSE
-fi
-
-# Unzip the required files from JBoss product deployable.
-echo Installing JBoss BPM Suite $BPM_VERSION
-echo
-unzip -q -o -d target $SRC_DIR/$BPMS
 
 echo "  - enabling demo accounts logins in application-users.properties file..."
 echo
@@ -176,13 +154,46 @@ cd $PRJ_DIR
 mvn clean install 
 
 echo
+echo "==========================================================================================="
+echo "=                                                                                         ="
+echo "=  You can now start the JBoss BPM Suite with:                                            ="
+echo "=                                                                                         ="
+echo "=        $SERVER_BIN/standalone.sh                                         ="
+echo "=                                                                                         ="
+echo "=    - login, build and deploy JBoss BPM Suite process project at:                        ="
+echo "=                                                                                         ="
+echo "=        http://localhost:8080/business-central (u:erics/p:bpmsuite)                      ="
+echo "=                                                                                         ="
+echo "=  Deploying the camel route in JBoss Fuse as follows:                                    ="
+echo "=                                                                                         ="
+echo "=    - add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml            =" 
+echo "=      file the fabric server's user and password so that the maven plugin can            ="
+echo "=      login to the fabric. fabric8.upload.repoadminadmin                                 ="
+echo "=                                                                                         ="
+echo "=    - start the JBoss Fuse with:                                                         ="
+echo "=                                                                                         ="
+echo "=        $FUSE_BIN/fuse                                    ="
+echo "=                                                                                         ="
+echo "=    - start up fabric in fuse console: fabric:create --wait-for-provisioning             ="
+echo "=                                                                                         ="
+echo "=    - run 'mvn fabric8:deploy' from projects/brms-fuse-integration/simpleRoute           ="
+echo "=                                                                                         ="
+echo "=    - login to Fuse management console at:                                               ="
+echo "=                                                                                         ="
+echo "=        http://localhost:8181    (u:admin/p:admin)                                       ="
+echo "=                                                                                         ="
+echo "=    - connect to root container with login presented by console  (u:admin/p:admin)       ="
+echo "=                                                                                         ="
+echo "=    - create container name c1 and add BPMSuiteFuse profile (see readme for screenshot)  ="
+echo "=                                                                                         ="
+echo "=    - open c1 container to view route under 'DIAGRAM' tab                                ="
+echo "=                                                                                         ="
+echo "=    - trigger camel route by placing support/date/message.xml file into the              ="
+echo "=      following folder:                                                                  ="
+echo "=                                                                                         ="
+echo "=        $FUSE_HOME/instances/c1/src/data                       =" 
+echo "=                                                                                         ="
+echo "=                                                                                         ="
+echo "=   $DEMO Setup Complete.                                    ="
+echo "==========================================================================================="
 echo
-echo "You can now start the JBoss BPM Suite with $SERVER_BIN/standalone.sh"
-echo
-
-echo "You can start the JBoss Fuse with $FUSE_BIN/fuse"
-echo
-
-echo "$DEMO Setup Complete."
-echo
-
