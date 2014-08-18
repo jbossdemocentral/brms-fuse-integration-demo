@@ -44,12 +44,15 @@ fabric:create --wait-for-provisioning
 mvn fabric8:deploy
 ```
 
-8. Create container name c1 and add BPMSuiteFuse profile (see screenshot below)
+8. Login to Fuse management console at:  http://localhost:8181    (u:admin/p:admin).
 
-9. Trigger camel route by placing message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see
-	 screenshot below)
+9. Connect to root container with login presented by console  (u:admin/p:admin)   
 
-6. Enjoy the demo!
+10. Create container name c1 and add BPMSuiteFuse profile (see screenshot below)
+
+11. Trigger camel route by placing message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see screenshot below)
+
+12. Enjoy the demo!
 
 
 Note: JBoss BPM Suite user login (u:erics/p:bpmsuite), for Fuse the login (u:admin/p:admin).
