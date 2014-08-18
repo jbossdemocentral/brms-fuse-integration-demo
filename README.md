@@ -50,7 +50,7 @@ mvn fabric8:deploy
 
 10. Create container name c1 and add BPMSuiteFuse profile (see screenshot below)
 
-11. Trigger camel route by placing message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see screenshot below)
+11. Trigger camel route by placing support/data/message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see screenshot below)
 
 12. Enjoy the demo!
 
