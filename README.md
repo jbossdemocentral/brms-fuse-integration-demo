@@ -49,9 +49,6 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 12. Enjoy the demo!
 
 
-Note: JBoss BPM Suite user login (u:erics/p:bpmsuite), for Fuse the login (u:admin/p:admin).
-
-
 Coming soon:
 ------------
 
