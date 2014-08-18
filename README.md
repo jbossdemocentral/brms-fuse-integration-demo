@@ -78,4 +78,4 @@ See the tagged releases for the following versions of the product:
 ![Fuse Container] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/container.png)
 ![Fuse Camel Route] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
 ![BPM Suite Process] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
-![BPM Suite BAM] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/bpm-dashboard.png)
+![BPM Suite BAM] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
