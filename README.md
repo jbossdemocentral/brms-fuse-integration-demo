@@ -19,11 +19,7 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
 
-Deploy camel route in JBoss Fuse
---------------------------------
-
 5. Add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml file the fabric server's user and password so that the maven plugin can login to the fabric.
-
 ```
 <server>
   <id>fabric8.upload.repo</id>
@@ -33,17 +29,14 @@ Deploy camel route in JBoss Fuse
 ```
 
 6. Start Fuse Server and start up fabric in fuse console: 
-
 ```
 fabric:create --wait-for-provisioning 
 ```
 
 7. Deploy simple route from projects/brms-fuse-integration/simpleRoute:
-
 ```
 mvn fabric8:deploy
 ```
-
 8. Login to Fuse management console at:  http://localhost:8181    (u:admin/p:admin).
 
 9. Connect to root container with login presented by console  (u:admin/p:admin)   
