@@ -176,13 +176,28 @@ cd $PRJ_DIR
 mvn clean install 
 
 echo
+echo "==========================================================================================="
+echo "=                                                                                         ="
+echo "=  You can now start the JBoss BPM Suite with $SERVER_BIN/standalone.sh                   ="
+echo "=                                                                                         ="
+echo "=  Deploying the camel route in JBoss Fuse as follows:                                    ="
+echo "=                                                                                         ="
+echo "=    - add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml            =" 
+echo "=      file the fabric server's user and password so that the maven plugin can            ="
+echo "=      login to the fabric. fabric8.upload.repoadminadmin                                 ="
+echo "=                                                                                         ="
+echo "=    - start the JBoss Fuse with $FUSE_BIN/fuse                                           ="
+echo "=                                                                                         ="
+echo "=    - start up fabric in fuse console: fabric:create --wait-for-provisioning             ="
+echo "=                                                                                         ="
+echo "=    - run 'mvn fabric8:deploy' from projects/brms-fuse-integration/simpleRoute           ="
+echo "=                                                                                         ="
+echo "=    - create container name c1 and add BPMSuiteFuse profile (see readme for screenshot)  ="
+echo "=                                                                                         ="
+echo "=    - trigger camel route by placing message.xml files into the                          ="
+echo "=      $FUSE_BIN/../instances/c1/src/data folder                                          =" 
+echo "=                                                                                         ="
+echo "=                                                                                         ="
+echo "=   $DEMO Setup Complete.                                                                 ="
+echo "==========================================================================================="
 echo
-echo "You can now start the JBoss BPM Suite with $SERVER_BIN/standalone.sh"
-echo
-
-echo "You can start the JBoss Fuse with $FUSE_BIN/fuse"
-echo
-
-echo "$DEMO Setup Complete."
-echo
-
