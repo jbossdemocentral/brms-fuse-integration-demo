@@ -1,5 +1,5 @@
-JBoss BPM Suite & Fuse Integration Demo
-=======================================
+JBoss BPM Suite & JBoss Fuse Integration Demo
+=============================================
 
 Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases.
 
