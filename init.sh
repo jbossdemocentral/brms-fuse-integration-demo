@@ -1,6 +1,6 @@
 #!/bin/sh 
 DEMO="JBoss BRMS & Fuse Integration Demo"
-AUTHORS="Christina Lin, Eric D. Schabell"
+AUTHORS="Christina Lin, Kenny Peeples, Eric D. Schabell"
 PROJECT="git@github.com:eschabell/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.1
 FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
@@ -40,7 +40,7 @@ echo "##   ####   #      #     #  ###        #     ####  ###   ####   ##"
 echo "##                                                              ##"   
 echo "##                                                              ##"   
 echo "##  brought to you by,                                          ##"   
-echo "##             ${AUTHORS}                  ##"
+echo "##             ${AUTHORS}   ##"
 echo "##                                                              ##"   
 echo "##  ${PROJECT}     ##"
 echo "##                                                              ##"   
