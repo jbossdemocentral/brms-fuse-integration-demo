@@ -15,7 +15,7 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 2. Add products to installs directory.
 
-3. Run 'init.sh'.
+3. Run 'init.sh' or 'init.bat'.
 
 4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
 
