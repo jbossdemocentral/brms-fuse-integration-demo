@@ -168,7 +168,7 @@ echo ===========================================================================
 echo =                                                                             =
 echo =  You can now start the JBoss BPM Suite with:                                =
 echo =                                                                             =
-echo = %SERVER_BIN%/standalone.sh
+echo = %SERVER_BIN%/standalone.bat                                                 =
 echo =                                                                             =
 echo =    - login, build and deploy JBoss BPM Suite process project at:            =
 echo =                                                                             =
