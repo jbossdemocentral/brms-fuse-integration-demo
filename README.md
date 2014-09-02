@@ -62,6 +62,8 @@ Coming soon:
 Supporting Articles
 -------------------
 
+[The Most Popular Way to Get Started Integrating BPM with Apache Camel](http://www.schabell.org/2014/09/most-popular-way-get-started-integrating-bpm-apache-camel.html)
+
 [Enhancing your JBoss Integration with JBoss BRMS] (http://www.schabell.org/2013/08/enhancing-jboss-integration-jboss-fuse-brms.html)
 
 
