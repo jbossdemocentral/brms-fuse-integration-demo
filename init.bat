@@ -16,12 +16,9 @@ set SRC_DIR=%PROJECT_HOME%installs
 set PRJ_DIR=%PROJECT_HOME%projects\brms-fuse-integration
 set SUPPORT_DIR=%PROJECT_HOME%\support
 set FUSE=jboss-fuse-full-6.1.0.redhat-379.zip
-set EAP=jboss-eap-6.1.1.zip
-set BPMS=jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip
-set DESIGNER=designer-patched.war
-set BPM_VERSION=6.0.2
+set BPMS=jboss-bpms-installer-6.0.3.GA-redhat-1.jar
+set BPM_VERSION=6.0.3
 set FUSE_VERSION=6.1.0
-set EAP_VERSION=6.1.1
 
 REM wipe screen.
 cls 
@@ -55,16 +52,6 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 REM # make some checks first before proceeding. 
-if exist %SRC_DIR%\%EAP% (
-	echo EAP sources are present...
-	echo.
-) else (
-	echo Need to download %EAP% package from the Customer Support Portal
-	echo and place it in the %SRC_DIR% directory to proceed...
-	echo.
-	GOTO :EOF
-)
-
 if exist %SRC_DIR%\%FUSE% (
 	echo Fuse sources are present...
 	echo.
@@ -85,50 +72,27 @@ if exist %SRC_DIR%\%BPMS% (
 	GOTO :EOF
 )
 
-REM Create the target directory if it does not already exist.
-if not exist %PROJECT_HOME%\target (
-	echo - creating the target directory...
-	echo.
-	mkdir %PROJECT_HOME%\target
-) else (
-	echo - detected target directory, removed contents...
-	rmdir /S /Q %PROJECT_HOME%\target
-	mkdir %PROJECT_HOME%\target
-	echo.
-)
+REM Run installer.
+REM echo Product installer running now...
+REM echo.
+REM java -jar %SRC_DIR%/%BPMS% %SUPPORT_DIR%\installation-bpms -variablefile %SUPPORT_DIR%\installation-bpms.variables
 
 if exist %PROJECT_HOME%\target (
-	REM Unzip the JBoss EAP instance.
-	echo Installing JBoss EAP %EAP_VERSION%
-	echo.
-	cscript /nologo %SUPPORT_DIR%\windows\unzip.vbs %SRC_DIR%\%EAP% %PROJECT_HOME%\target
-
 	REM Unzip the JBoss FUSE instance.
+	echo.
 	echo Installing JBoss FUSE %FUSE_VERSION%
 	echo.
 	cscript /nologo %SUPPORT_DIR%\windows\unzip.vbs %SRC_DIR%\%FUSE% %PROJECT_HOME%\target
-	
-	REM Unzip the required files from JBoss product deployable.
-	echo Installing JBoss BPM Suite %BPM_VERSION%
-	echo.
-	cscript /nologo %SUPPORT_DIR%\windows\unzip.vbs %SRC_DIR%\%BPMS% %PROJECT_HOME%\target
 ) else (
+	echo.
 	echo Missing target directory, stopping installation.
 	echo.
 	GOTO :EOF
 )
 
-echo   - enabling demo accounts logins in application-users.properties file...
-echo.
-xcopy /Y /Q "%SUPPORT_DIR%\application-users.properties" "%SERVER_CONF%"
-
 echo   - enabling demo accounts role setup in application-roles.properties file...
 echo.
 xcopy /Y /Q "%SUPPORT_DIR%\application-roles.properties" "%SERVER_CONF%"
-
-echo   - enabling management accounts login setup in mgmt-users.properties file...
-echo.
-xcopy /Y /Q "%SUPPORT_DIR%\mgmt-users.properties" "%SERVER_CONF%"
 
 echo   - setting up demo projects..."
 echo.
@@ -172,7 +136,7 @@ echo = %SERVER_BIN%/standalone.bat                                              
 echo =                                                                             =
 echo =    - login, build and deploy JBoss BPM Suite process project at:            =
 echo =                                                                             =
-echo =        http://localhost:8080/business-central (u:erics/p:bpmsuite)          =
+echo =        http://localhost:8080/business-central    u:erics / p:bpmsuite1!     =
 echo =                                                                             =
 echo =  Deploying the camel route in JBoss Fuse as follows:                        =
 echo =                                                                             =
@@ -190,13 +154,13 @@ echo =   - run 'mvn fabric8:deploy' from projects/brms-fuse-integration/simpleRo
 echo =                                                                             =
 echo =   - login to Fuse management console at:                                    =
 echo =                                                                             =
-echo =       http://localhost:8181    (u:admin/p:admin)                            =
+echo =       http://localhost:8181     u:admin / p:admin                           =
 echo =                                                                             =
 echo =   - connect to root container with login presented by console               =
-echo =	   (u:admin/p:admin)                                                  =
+echo =	     u:admin / p:admin                                                     =
 echo =                                                                             =
 echo =   - create container name c1 and add BPMSuiteFuse profile                   =
-echo =     (see readme for screenshot)                                             =
+echo =     see readme for screenshot                                               =
 echo =                                                                             =
 echo =   - open c1 container to view route under 'DIAGRAM' tab                     =
 echo =                                                                             =

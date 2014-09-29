@@ -21,7 +21,7 @@ public class RestClientSimple {
     private static final String PROCESS_DEF_ID = "customer.evaluation";
     
     private static String username = "erics";
-    private static String password = "bpmsuite";
+    private static String password = "bpmsuite1!";
     private static AuthenticationType type = AuthenticationType.FORM_BASED;
 
     public static void main(String[] args) throws Exception {

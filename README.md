@@ -17,7 +17,7 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 3. Run 'init.sh' or 'init.bat'.
 
-4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite).
+4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite1!).
 
 5. Add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml file the fabric server's user and password so that the maven plugin can login to the fabric.
      ```
@@ -71,6 +71,8 @@ Released versions
 -----------------
 
 See the tagged releases for the following versions of the product:
+
+- v2.1 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0, with route and process
 
 - v2.0 is JBoss BPM Suite 6.0.2 deployable, running on JBoss EAP 6.1.1, and JBoss Fuse Full 6.1.0, with route and process
 	integration project deployed.

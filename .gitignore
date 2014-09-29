@@ -6,3 +6,4 @@ RemoteSystemsTempFiles/
 .settings/
 .project
 .classpath
+*.jar

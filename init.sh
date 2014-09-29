@@ -13,12 +13,10 @@ SRC_DIR=./installs
 PRJ_DIR=./projects/brms-fuse-integration
 SUPPORT_DIR=./support
 FUSE=jboss-fuse-full-6.1.0.redhat-379.zip
-EAP=jboss-eap-6.1.1.zip
-BPMS=jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip
+BPMS=jboss-bpms-installer-6.0.3.GA-redhat-1.jar
 DESIGNER=designer-patched.war
-BPM_VERSION=6.0.2
+BPM_VERSION=6.0.3
 FUSE_VERSION=6.1.0
-EAP_VERSION=6.1.1
 
 # wipe screen.
 clear 
@@ -50,18 +48,18 @@ echo
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
 
 # make some checks first before proceeding.	
-if [[ -r $SRC_DIR/$EAP || -L $SRC_DIR/$EAP ]]; then
-		echo EAP sources are present...
-		echo
+if [ -r $SRC_DIR/$BPMS ] || [ -L $SRC_DIR/$BPMS ]; then
+	echo Product sources BPM are present...
+	echo
 else
-		echo Need to download $EAP package from the Customer Support Portal 
-		echo and place it in the $SRC_DIR directory to proceed...
-		echo
-		exit
+	echo Need to download $BPMS package from the Customer Portal 
+	echo and place it in the $SRC_DIR directory to proceed...
+	echo
+	exit
 fi
 
-if [[ -r $SRC_DIR/$FUSE || -L $SRC_DIR/$FUSE ]]; then
-		echo Fuse sources are present...
+if [ -r $SRC_DIR/$FUSE ] || [ -L $SRC_DIR/$FUSE ]; then
+		echo Product sources FUSE are present...
 		echo
 else
 		echo Need to download $FUSE package from the Customer Support Portal 
@@ -70,61 +68,35 @@ else
 		exit
 fi
 
-if [[ -r $SRC_DIR/$BPMS || -L $SRC_DIR/$BPMS ]]; then
-		echo BPM Suite sources are present...
-		echo
-else
-		echo Need to download $BPMS package from the Customer Support Portal 
-		echo and place it in the $SRC_DIR directory to proceed...
-		echo
-		exit
+# Remove JBoss product installation if exists.
+if [ -x target ]; then
+	echo "  - existing JBoss product installation detected..."
+	echo
+	echo "  - removing existing JBoss product installation..."
+	echo
+	rm -rf target
 fi
 
-
-# Create the target directory if it does not already exist.
-if [ ! -x target ]; then
-		echo "  - creating the target directory..."
-		echo
-		mkdir target
-else
-		echo "  - detected target directory, removed contents..."
-		rm -rf target
-		mkdir target
-		echo
-fi
+# Run installer.
+echo Product BPM installer running now...
+echo
+java -jar $SRC_DIR/$BPMS $SUPPORT_DIR/installation-bpms -variablefile $SUPPORT_DIR/installation-bpms.variables
 
 if [ -x target ]; then
-  # Unzip the JBoss EAP instance.
-  echo Installing JBoss EAP $EAP_VERSION
-  echo
-  unzip -q -d target $SRC_DIR/$EAP
-
   # Unzip the JBoss FUSE instance.
   echo Installing JBoss FUSE $FUSE_VERSION
   echo
   unzip -q -d target $SRC_DIR/$FUSE
-
-  # Unzip the required files from JBoss product deployable.
-  echo Installing JBoss BPM Suite $BPM_VERSION
-  echo
-  unzip -q -o -d target $SRC_DIR/$BPMS
 else
+	echo
 	echo Missing target directory, stopping installation.
 	echo 
 	exit
 fi
 
-echo "  - enabling demo accounts logins in application-users.properties file..."
-echo
-cp $SUPPORT_DIR/application-users.properties $SERVER_CONF
-
 echo "  - enabling demo accounts role setup in application-roles.properties file..."
 echo
 cp $SUPPORT_DIR/application-roles.properties $SERVER_CONF
-
-echo "  - enabling management accounts login setup in mgmt-users.properties file..."
-echo
-cp $SUPPORT_DIR/mgmt-users.properties $SERVER_CONF
 
 echo "  - setting up demo projects..."
 echo
@@ -162,7 +134,7 @@ echo "=        $SERVER_BIN/standalone.sh                                        
 echo "=                                                                                         ="
 echo "=    - login, build and deploy JBoss BPM Suite process project at:                        ="
 echo "=                                                                                         ="
-echo "=        http://localhost:8080/business-central (u:erics/p:bpmsuite)                      ="
+echo "=        http://localhost:8080/business-central (u:erics/p:bpmsuite1!)                    ="
 echo "=                                                                                         ="
 echo "=  Deploying the camel route in JBoss Fuse as follows:                                    ="
 echo "=                                                                                         ="

@@ -1,14 +1,12 @@
 Download the following from the JBoss Customer Portal
 
- * BPM Suite (jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip)
- * EAP (jboss-eap-6.1.1.zip)
+ * BPM Suite (jboss-bpms-installer-6.0.3.GA-redhat-1.jar)
  * Fuse (jboss-fuse-full-6.1.0.redhat-379.zip)
 
 and copy to this directory for the init.sh script to work.
 
 Ensure that this file is executable by running:
 
-chmod +x <path-to-project>/installs/jboss-bpms-6.0.2.GA-redhat-5-deployable-eap6.x.zip
-chmod +x <path-to-project>/installs/brms-eap-6.1.1.zip
+chmod +x <path-to-project>/installs/jboss-bpms-installer-6.0.3.GA-redhat-1.jar
 chmod +x <path-to-project>/installs/jboss-fuse-full-6.1.0.redhat-379.zip
 
