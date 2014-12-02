@@ -11,7 +11,7 @@ Setup and Configuration
 
 See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
 
-1. [Download and unzip.](https://github.com/eschabell/brms-fuse-integration-demo/archive/master.zip)
+1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip)
 
 2. Add products to installs directory.
 
@@ -78,6 +78,8 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
+- v2.1 moved to JBoss Demo Central.
+
 - v2.1 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0, with route and process
 
 - v2.0 is JBoss BPM Suite 6.0.2 deployable, running on JBoss EAP 6.1.1, and JBoss Fuse Full 6.1.0, with route and process
@@ -85,8 +87,8 @@ See the tagged releases for the following versions of the product:
 
 - v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
 
-[![Video Demo Run] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
-![Fuse Container] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/container.png)
-![Fuse Camel Route] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
-![BPM Suite Process] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
-![BPM Suite BAM] (https://raw.githubusercontent.com/eschabell/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
+[![Video Demo Run] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
+![Fuse Container] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/container.png)
+![Fuse Camel Route] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
+![BPM Suite Process] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
+![BPM Suite BAM] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)

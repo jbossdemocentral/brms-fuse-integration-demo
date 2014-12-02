@@ -4,7 +4,7 @@ setlocal
 set PROJECT_HOME=%~dp0
 set DEMO=JBoss BRMS & Fuse Integration Demo
 set AUTHORS=Christina Lin, Kenny Peeples, Eric D. Schabell
-set PROJECT=git@github.com:eschabell/brms-fuse-integration-demo.git
+set PROJECT=git@github.com:jbossdemocentral/brms-fuse-integration-demo.git
 set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.1
 set FUSE_HOME=%PROJECT_HOME%target\jboss-fuse-6.1.0.redhat-379
 set FUSE_BIN=%FUSE_HOME%\bin

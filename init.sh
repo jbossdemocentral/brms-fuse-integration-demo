@@ -1,7 +1,7 @@
 #!/bin/sh 
 DEMO="JBoss BRMS & Fuse Integration Demo"
 AUTHORS="Christina Lin, Kenny Peeples, Eric D. Schabell"
-PROJECT="git@github.com:eschabell/brms-fuse-integration-demo.git"
+PROJECT="git@github.com:jbossdemocentral/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.1
 FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
 FUSE_BIN=$FUSE_HOME/bin
