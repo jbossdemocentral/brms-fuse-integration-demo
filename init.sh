@@ -82,6 +82,11 @@ echo Product BPM installer running now...
 echo
 java -jar $SRC_DIR/$BPMS $SUPPORT_DIR/installation-bpms -variablefile $SUPPORT_DIR/installation-bpms.variables
 
+if [ $? -ne 0 ]; then
+	echo Error occurred during BPMS installation!
+	exit
+fi
+
 if [ -x target ]; then
   # Unzip the JBoss FUSE instance.
   echo Installing JBoss FUSE $FUSE_VERSION

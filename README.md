@@ -11,11 +11,11 @@ Setup and Configuration
 
 See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
 
-1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip)
+1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip). If running on Windows, it is recommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.
 
 2. Add products to installs directory.
 
-3. Run 'init.sh' or 'init.bat'.
+3. Run 'init.sh' or 'init.bat' file. 'init.bat' must be run with Administrative privileges.
 
 4. Start the JBoss BPM Suite server, login, build and deploy JBoss BPM Suite process project at http://localhost:8080/business-central (u:erics/p:bpmsuite1!).
 
