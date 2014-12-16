@@ -78,7 +78,7 @@ Released versions
 
 See the tagged releases for the following versions of the product:
 
-- v2.1 moved to JBoss Demo Central.
+- v2.2 moved to JBoss Demo Central, with updated windows init.bat support.
 
 - v2.1 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0, with route and process
 
