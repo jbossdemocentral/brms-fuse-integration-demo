@@ -5,6 +5,7 @@ set PROJECT_HOME=%~dp0
 set DEMO=JBoss BRMS & Fuse Integration Demo
 set AUTHORS=Christina Lin, Kenny Peeples, Eric D. Schabell
 set PROJECT=git@github.com:jbossdemocentral/brms-fuse-integration-demo.git
+set TARGET_DIR=%PROJECT_HOME%target
 set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.1
 set FUSE_HOME=%PROJECT_HOME%target\jboss-fuse-6.1.0.redhat-379
 set FUSE_BIN=%FUSE_HOME%\bin
@@ -72,10 +73,23 @@ if exist %SRC_DIR%\%BPMS% (
 	GOTO :EOF
 )
 
+REM Move the old JBoss instance, if it exists, to the OLD position.
+if exist %TARGET_DIR% (
+         echo - existing JBoss product install removed...
+         echo.
+         rmdir /s /q %TARGET_DIR%
+ )
+
 REM Run installer.
-REM echo Product installer running now...
-REM echo.
-REM java -jar %SRC_DIR%/%BPMS% %SUPPORT_DIR%\installation-bpms -variablefile %SUPPORT_DIR%\installation-bpms.variables
+echo Product installer running now...
+echo.
+call java -jar %SRC_DIR%/%BPMS% %SUPPORT_DIR%\installation-bpms -variablefile %SUPPORT_DIR%\installation-bpms.variables
+
+if not "%ERRORLEVEL%" == "0" (
+	echo Error Occurred During %PRODUCT% Installation!
+	echo.
+	GOTO :EOF
+)
 
 if exist %PROJECT_HOME%\target (
 	REM Unzip the JBoss FUSE instance.
