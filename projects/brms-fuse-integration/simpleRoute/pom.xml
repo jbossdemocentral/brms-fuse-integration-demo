@@ -16,7 +16,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     
     <fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>                                                       
-	<fabric8.profile>BPMSuiteFuse</fabric8.profile>                                                                    
+	<fabric8.profile>bpmsuitefuse</fabric8.profile> 
 	<fabric8.bundles>wrap:mvn:commons-httpclient/commons-httpclient/3.1 mvn:com.google.code.gson/gson/2.2.4</fabric8.bundles>    
 	<fabric8.features>war camel-cxf camel-spring camel-http camel-stream </fabric8.features>               
 	<fabric8.featureRepos>mvn:org.apache.camel.karaf/apache-camel/${version:camel}/xml/features</fabric8.featureRepos>   
@@ -232,6 +232,7 @@
 	<plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
+        <version>1.0.0.redhat-379</version>
     </plugin>
     </plugins>
     
