@@ -54,35 +54,38 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 12. Enjoy the demo!
 
-Docker
---------------
+
+Optional Docker Install
+-----------------------
 The following steps can be used to configure and run the demo in a docker container
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip). 
 
 2. Add products to installs directory.
 
-3. Build demo image
+3. Copy contents of support/docker directory to the project root.
+
+4. Build demo image
 
 	```
 	docker build -t jbossdemocentral/brms-fuse-integration-demo .
 	```
-4. Start demo container
+5. Start demo container
 
 	```
 	docker run --it -p 8080:8080 -p 9990:9990 -p 8181:8181 jbossdemocentral/brms-fuse-integration-demo
 	``` 
 	
-5. Login, build and deploy JBoss BPM Suite process project at http://<DOCKER_HOST>:8080/business-central (u:erics/p:bpmsuite1!).
+6. Login, build and deploy JBoss BPM Suite process project at http://<DOCKER_HOST>:8080/business-central (u:erics/p:bpmsuite1!).
 
-6. Login to Fuse management console at:  http://<DOCKER_HOST>:8181    (u:admin/p:admin).
+7. Login to Fuse management console at:  http://<DOCKER_HOST>:8181    (u:admin/p:admin).
 
-7. Navigate to Terminal tab and create fabric
+8. Navigate to Terminal tab and create fabric
 
      ```
      fabric:create --wait-for-provisioning 
      ```
-8. Within the running container, deploy simple route from /opt/jboss/projects/brms-fuse-integration/simpleRoute:
+9. Within the running container, deploy simple route from /opt/jboss/projects/brms-fuse-integration/simpleRoute:
 
      ```
      mvn fabric8:deploy
@@ -122,6 +125,8 @@ Released versions
 -----------------
 
 See the tagged releases for the following versions of the product:
+
+- v2.3 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0 and optional docker installation. 
 
 - v2.2 moved to JBoss Demo Central, with updated windows init.bat support.
 
