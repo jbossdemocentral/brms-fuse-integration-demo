@@ -115,6 +115,7 @@ Coming soon:
 
 Supporting Articles
 -------------------
+[5 Handy Tips From JBoss BPM Suite For Release 6.0.3](http://www.schabell.org/2014/10/5-handy-tips-from-jboss-bpmsuite-release-603.html)
 
 [The Most Popular Way to Get Started Integrating BPM with Apache Camel](http://www.schabell.org/2014/09/most-popular-way-get-started-integrating-bpm-apache-camel.html)
 
