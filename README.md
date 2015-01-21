@@ -5,10 +5,11 @@ Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the 
 
   * call a BPM process from a fuse camel route.
 
+There are two options available to you for using this demo; local and Docker.
 
-Setup and Configuration
-=======================
 
+Option 1 - Install on your machine
+----------------------------------
 See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip). If running on Windows, it is recommended the project be extracted to a location near the root drive path due to limitations of length of file/path names.
@@ -55,8 +56,8 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 12. Enjoy the demo!
 
 
-Optional Docker Install
------------------------
+Option 2 - Generate docker install
+----------------------------------
 The following steps can be used to configure and run the demo in a docker container
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip). 
@@ -103,8 +104,8 @@ The following steps can be used to configure and run the demo in a docker contai
 Additional information can be found in the jbossdemocentral docker [developer repository](https://github.com/jbossdemocentral/docker-developer)
 
 
-Coming soon:
-------------
+Coming soon
+-----------
 
   * call a fuse end point from a BPM process.
 
@@ -115,6 +116,7 @@ Coming soon:
 
 Supporting Articles
 -------------------
+[3 shockingly easy ways into JBoss rules, events, planning & BPM](http://www.schabell.org/2015/01/3-shockingly-easy-ways-into-jboss-brms-bpmsuite.html)
 
 [The Most Popular Way to Get Started Integrating BPM with Apache Camel](http://www.schabell.org/2014/09/most-popular-way-get-started-integrating-bpm-apache-camel.html)
 
@@ -123,7 +125,6 @@ Supporting Articles
 
 Released versions
 -----------------
-
 See the tagged releases for the following versions of the product:
 
 - v2.3 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0 and optional docker installation. 
@@ -136,6 +137,7 @@ See the tagged releases for the following versions of the product:
 	integration project deployed.
 
 - v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
+
 
 [![Video Demo Run] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
 ![Fuse Container] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/container.png)
