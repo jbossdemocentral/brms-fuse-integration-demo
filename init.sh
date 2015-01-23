@@ -1,6 +1,7 @@
 #!/bin/sh 
 DEMO="JBoss BRMS & Fuse Integration Demo"
-AUTHORS="Christina Lin, Kenny Peeples, Eric D. Schabell"
+AUTHORS="Christina Lin, Andrew Block,"
+AUTHORS2="Kenny Peeples, Eric D. Schabell"
 PROJECT="git@github.com:jbossdemocentral/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.1
 FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
@@ -25,24 +26,25 @@ clear
 chmod +x installs/*.zip
 
 echo
-echo "##################################################################"
-echo "##                                                              ##"   
-echo "##  Setting up the ${DEMO}           ##"
-echo "##                                                              ##"   
-echo "##                                                              ##"   
-echo "##   ####   ####    #   #    ###       ####  #  #   ###  ####   ##"
-echo "##   #   #  #   #  # # # #  #      #   #     #  #  #     #      ##"
-echo "##   ####   ####   #  #  #   ##   ###  ###   #  #   ##   ###    ##"
-echo "##   #   #  #      #     #     #   #   #     #  #     #  #      ##"
-echo "##   ####   #      #     #  ###        #     ####  ###   ####   ##"
-echo "##                                                              ##"   
-echo "##                                                              ##"   
-echo "##  brought to you by,                                          ##"   
-echo "##             ${AUTHORS}   ##"
-echo "##                                                              ##"   
+echo "#########################################################################"
+echo "##                                                                     ##"   
+echo "##  Setting up the ${DEMO}                  ##"
+echo "##                                                                     ##"   
+echo "##                                                                     ##"   
+echo "##   ####   ####    #   #    ###             ####  #  #   ###  ####    ##"
+echo "##   #   #  #   #  # # # #  #         #      #     #  #  #     #       ##"
+echo "##   ####   ####   #  #  #   ##      ###     ###   #  #   ##   ###     ##"
+echo "##   #   #  #      #     #     #      #      #     #  #     #  #       ##"
+echo "##   ####   #      #     #  ###              #     ####  ###   ####    ##"
+echo "##                                                                     ##"   
+echo "##                                                                     ##"   
+echo "##  brought to you by,                                                 ##"   
+echo "##                     ${AUTHORS}                    ##"
+echo "##                       ${AUTHORS2}               ##"
+echo "##                                                                     ##"   
 echo "##  ${PROJECT}     ##"
-echo "##                                                              ##"   
-echo "##################################################################"
+echo "##                                                                     ##"   
+echo "#########################################################################"
 echo
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
