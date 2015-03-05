@@ -162,7 +162,7 @@ echo =     the maven plugin can login to the fabric. fabric8.upload.repoadminadm
 echo =                                                                             =
 echo =   - start the JBoss Fuse with:                                              =
 echo =                                                                             =
-echo =       %FUSE_BIN%/fuse
+echo =       %FUSE_BIN%/fuse                               =
 echo =                                                                             =
 echo =   - start up fabric in fuse console: fabric:create --wait-for-provisioning  =
 echo =                                                                             =
@@ -183,7 +183,7 @@ echo =                                                                          
 echo =   - trigger camel route by placing support/date/message.xml file into the   =
 echo =     following folder:                                                       =
 echo =                                                                             =
-echo =       %FUSE_HOME%\instances\c1\src\data
+echo =       %FUSE_HOME%\instances\c1\src\data  =
 echo =                                                                             =
 echo =                                                                             =
 echo =   %DEMO% Setup Complete.                                               =
