@@ -1,6 +1,5 @@
 JBoss BPM Suite & JBoss Fuse Integration Demo
 =============================================
-
 Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases.
 
   * call a BPM process from a fuse camel route.
@@ -71,6 +70,7 @@ The following steps can be used to configure and run the demo in a docker contai
 	```
 	docker build -t jbossdemocentral/brms-fuse-integration-demo .
 	```
+
 5. Start demo container
 
 	```
@@ -86,6 +86,7 @@ The following steps can be used to configure and run the demo in a docker contai
      ```
      fabric:create --wait-for-provisioning 
      ```
+
 9. Within the running container, deploy simple route from /opt/jboss/projects/brms-fuse-integration/simpleRoute:
 
      ```
@@ -131,8 +132,7 @@ See the tagged releases for the following versions of the product:
 
 - v2.1 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0, with route and process
 
-- v2.0 is JBoss BPM Suite 6.0.2 deployable, running on JBoss EAP 6.1.1, and JBoss Fuse Full 6.1.0, with route and process
-	integration project deployed.
+- v2.0 is JBoss BPM Suite 6.0.2 deployable, running on JBoss EAP 6.1.1, and JBoss Fuse Full 6.1.0, with route and process integration project deployed.
 
 - v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
 

@@ -1,0 +1,20 @@
+{
+  "name":"JBoss BPM Suite & JBoss Fuse Integration Demo",
+  "summary":"Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases, call a BPM process from a fuse camel route.
+
+Install options - local and Docker.",
+  "author":"Christina Lin, Andrew Block, Kenny Peeples, Eric D. Schabell",
+  "categories":["bpms","fuse","multi"],
+  "level":"Easy Peasy",
+  "published":true,
+  "prerequisites":"Java 1.7, Maven",
+  "targetProduct":"JBoss BPM Suite and JBoss Fuse",
+  "productVersion":"JBoss BRMS 5.3.1, JBoss BPM Suite 6.0.2 onwards, JBoss Fuse 6.0.0 onwards",
+  "technologies": ["JBoss BRMS","JBoss BPM Suite","JBoss Fuse"],
+  "links": [ 
+    {
+      "name":"Code",
+      "url":"https://github.com/jbossdemocentral/brms-fuse-integration-demo"
+    }
+  ]
+}
