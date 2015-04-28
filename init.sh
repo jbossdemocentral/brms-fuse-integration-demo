@@ -3,8 +3,8 @@ DEMO="JBoss BRMS & Fuse Integration Demo"
 AUTHORS="Christina Lin, Andrew Block,"
 AUTHORS2="Kenny Peeples, Eric D. Schabell"
 PROJECT="git@github.com:jbossdemocentral/brms-fuse-integration-demo.git"
-JBOSS_HOME=./target/jboss-eap-6.1
-FUSE_HOME=./target/jboss-fuse-6.1.0.redhat-379
+JBOSS_HOME=./target/jboss-eap-6.4
+FUSE_HOME=./target/jboss-fuse-6.1.1.redhat-412
 FUSE_BIN=$FUSE_HOME/bin
 SERVER_DIR=$JBOSS_HOME/standalone/deployments/
 SERVER_CONF=$JBOSS_HOME/standalone/configuration/
@@ -13,11 +13,14 @@ SERVER_BIN=$JBOSS_HOME/bin
 SRC_DIR=./installs
 PRJ_DIR=./projects/brms-fuse-integration
 SUPPORT_DIR=./support
-FUSE=jboss-fuse-full-6.1.0.redhat-379.zip
-BPMS=jboss-bpms-installer-6.0.3.GA-redhat-1.jar
+FUSE=jboss-fuse-full-6.1.1.redhat-412.zip
+EAP=jboss-eap-6.4.0.zip
+BPMS=jboss-bpmsuite-6.1.0.GA-installer.jar
 DESIGNER=designer-patched.war
-BPM_VERSION=6.0.3
-FUSE_VERSION=6.1.0
+JBOSS_CONFIG=standalone.xml
+EAP_VERSION=6.4.0
+BPM_VERSION=6.1.0
+FUSE_VERSION=6.1.1
 
 # wipe screen.
 clear 
@@ -50,6 +53,17 @@ echo
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
 
 # make some checks first before proceeding.	
+
+if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
+	echo Product sources EAP are present...
+	echo
+else
+	echo Need to download $EAP package from the Customer Portal 
+	echo and place it in the $SRC_DIR directory to proceed...
+	echo
+	exit
+fi
+
 if [ -r $SRC_DIR/$BPMS ] || [ -L $SRC_DIR/$BPMS ]; then
 	echo Product sources BPM are present...
 	echo
@@ -79,11 +93,17 @@ if [ -x target ]; then
 	rm -rf target
 fi
 
-# Run installer.
-echo Product BPM installer running now...
-echo
-java -jar $SRC_DIR/$BPMS $SUPPORT_DIR/installation-bpms -variablefile $SUPPORT_DIR/installation-bpms.variables
+echo Installing JBoss EAP $EAP_VERSION
+unzip -q -d target $SRC_DIR/$EAP
+if [ $? -ne 0 ]; then
+	exit
+fi
 
+# Run BPM installer.
+echo Product BPM installer running now...
+echo "java -jar $SRC_DIR/$BPMS $SUPPORT_DIR/installation-bpms -variablefile $SUPPORT_DIR/installation-bpms.variables"
+echo
+java -jar $SRC_DIR/$BPMS $SUPPORT_DIR/bpminstall.xml -variablefile $SUPPORT_DIR/installation-bpms.variables
 if [ $? -ne 0 ]; then
 	echo Error occurred during BPMS installation!
 	exit
@@ -101,21 +121,19 @@ else
 	exit
 fi
 
-echo "  - enabling demo accounts role setup in application-roles.properties file..."
-echo
-cp $SUPPORT_DIR/application-roles.properties $SERVER_CONF
-
 echo "  - setting up demo projects..."
 echo
-cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
-
-echo "  - setting up standalone.xml configuration adjustments..."
-echo
-cp $SUPPORT_DIR/standalone.xml $SERVER_CONF
+#cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
 
 echo "  - making sure standalone.sh for server is executable..."
 echo
 chmod u+x $JBOSS_HOME/bin/standalone.sh
+
+echo " - system property changes to standalone.xml "
+$JBOSS_HOME/bin/standalone.sh --server-config=$JBOSS_CONFIG --admin-only & \
+    sleep 15s && \
+    $JBOSS_HOME/bin/jboss-cli.sh --connect --file=$SUPPORT_DIR/configure-eap.cli
+killall java
 
 echo "  - enabling demo accounts logins in users.properties file..."
 echo
@@ -137,11 +155,11 @@ echo "==========================================================================
 echo "=                                                                                         ="
 echo "=  You can now start the JBoss BPM Suite with:                                            ="
 echo "=                                                                                         ="
-echo "=        $SERVER_BIN/standalone.sh                                         ="
+echo "=        $SERVER_BIN/standalone.sh                                                        ="
 echo "=                                                                                         ="
 echo "=    - login, build and deploy JBoss BPM Suite process project at:                        ="
 echo "=                                                                                         ="
-echo "=        http://localhost:8080/business-central (u:erics/p:bpmsuite1!)                    ="
+echo "=        http://localhost:8080/business-central (u:bpmsAdmin/p:bpmsuite1!)                    ="
 echo "=                                                                                         ="
 echo "=  Deploying the camel route in JBoss Fuse as follows:                                    ="
 echo "=                                                                                         ="
