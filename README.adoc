@@ -62,34 +62,45 @@ A single of the `customer.evaluation` BPMN2 process is started.
 
 . cd $PROJECT_HOME/projects/brms-fuse-integration
 . mvn camel:run
-
+. In the BPM Suite 6 log file, there should be new messages similar to the following:
++
+image::images/logfile.png[]
 === Execute *simpleRoute* project in JBoss Fuse
+
+==== Start Fuse server and Fabric
+. cd target/jboss-fuse-6.1.1.redhat-412/
+. ./bin/fuse
+. Create a new Fuse fabric (which consists of a single Fabric Server, by default).
++
+Enter the following command in the JBoss Fuse console:
++
+-----
+fabric:create --wait-for-provisioning
+-----
+. Tail the fuse server log file
++
+Enter the following command in the JBoss Fuse console:
++
+-----
+log:tail
+-----
+
+==== Deploy *simpleRoute* artifact to Fuse
 . Add fabric server passwords for Maven Plugin to your `~/.m2/settings.xml` file
 +
 This is required so that the maven plugin can login to fabric.
 +
 -----
-     ```
-     <!-- Server login to upload to fabric. -->
-     <servers>
-         <server>
-             <id>fabric8.upload.repo</id>
-             <username>admin</username>
-             <password>admin</password>
-         </server>
-     </servers>
-     ```
------
-
-. Start Fuse Server
-.. cd target/jboss-fuse-6.1.1.redhat-412/
-.. ./bin/fuse
-. Create a new Fuse fabric (which consists of a single Fabric Server, by default).
-+
-Enter the following command in the JBoss Fuse container console:
-+
------
-fabric:create --wait-for-provisioning
+```
+<!-- Server login to upload to fabric. -->
+<servers>
+  <server>
+    <id>fabric8.upload.repo</id>
+    <username>admin</username>
+    <password>admin</password>
+  </server>
+</servers>
+```
 -----
 . Deploy `simpleRoute` project
 .. cd projects/brms-fuse-integration/simpleRoute:
@@ -99,17 +110,32 @@ fabric:create --wait-for-provisioning
 mvn fabric8:deploy
 -----
 
+==== Create Container using *bpmsuitefuse* profile
 . Login to Fuse management console at:  http://localhost:8181
 +
 Use the following credentials:  (u:admin/p:admin).
-. Connect to root container with login presented by console  (u:admin/p:admin)
+
 . Create container name c1 and add bpmsuitefuse profile (see screenshot below)
-. Trigger camel route
+.. In the top toolbar of the `Fuse Management Console`, navigate to: `Runtime -> Containers`
+.. Click the `Create` button at the right side of the panel:
++
+image::images/createbutton.png[]
+.. The `Create New Container` panel appears.
++
+image::images/container.png[]
+.. As the value of the *Container Name* text box, enter:  `c1`
+.. In the `Profiles` section, expand the `Uncategorized` folder and select `bpmsuitefuse`
+.. Click the green `Create and start container` button
+
+==== Trigger camel route
 .. cd $PROJECT_HOME
+.. Ensure you are tailing both the BPM Suite 6 and JBoss Fuse log files
 .. execute:
 +
 `cp support/data/message.xml target/jboss-fuse-6.1.1.redhat-412/instances/c1/src/data`
-
+.. Similar to when the *simpleroute* project was executed from the command line, the following should appear in the BPM Suite 6 log file:
++
+image::images/logfile.png[]
 
 == Option2: docker install
 
@@ -194,7 +220,7 @@ See the tagged releases for the following versions of the product:
 
 
 [![Video Demo Run] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
-![Fuse Container] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/container.png)
+
 ![Fuse Camel Route] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
 ![BPM Suite Process] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
 ![BPM Suite BAM] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
