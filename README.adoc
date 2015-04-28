@@ -1,5 +1,10 @@
 = JBoss BPM Suite & JBoss Fuse Integration Demo
 
+:data-uri:
+:toc: manual
+:toc-placement: preamble
+:numbered:
+
 Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases.
 
   * call a BPM process from a fuse camel route.
