@@ -86,7 +86,7 @@ In this section, the camel based `simpleRoute` project will be executed at the c
 
 Within the camel route, the class `com.jboss.examples.RestClientSimple` will be invoked.
 This class utilizes Apache HTTP commons libraries to invoke the RESTFul API of the remote BPM Suite 6 Execution Server.
-A single of the `customer.evaluation` BPMN2 process is started.
+A single instnace of the `customer.evaluation` BPMN2 process is started.
 
 . cd $PROJECT_HOME/projects/brms-fuse-integration/simpleRoute
 . mvn camel:run
