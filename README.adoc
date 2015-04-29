@@ -58,13 +58,28 @@ For the purposes of this tutorial, this directory will be referred to as `$PROJE
 .. `./init.sh`
 
 === Deploy BPM *customer-evaluation* project
+Your BPM environment comes seeded with a demo organization called: `Sales` and a git repository called: `customer`.
+
+In this section, let's build and deploy the KIE project included in this `customer` repository.
+
 . Start the JBoss BPM Suite server
 .. cd  $PROJECT_HOME/target/jboss-eap-6.4
 .. execute:  ./bin/standalone.sh
 . log into the `BPM Console` at `http://localhost:8080/business-central`
 +
 Use the following credentials to authenticate:  (u:bpmsAdmin/p:bpmsuite1!).
-. build and deploy the `customer-evaluation` project
+. Navigate to `Authoring -> Project Authoring`
++
+You'll notice that in the `customer` repository is an existing project called: `customer-evaluation`.
++
+image::images/builddeploy.png[]
+. Click `Open Project Editor`
+. In the tob toolbar of the `Project` panel, select `Build and Deploy` from the `Build` dropdown.
+. In the top toolbar of the `BPM Console`, select `Deploy -> Process Deployments`
++
+You should see a new Deployment Unit of: `customer:evaluation:1.0`
++
+image::images/deployment.png[]
 
 === Execute *simpleRoute* project at command line
 In this section, the camel based `simpleRoute` project will be executed at the command line.
