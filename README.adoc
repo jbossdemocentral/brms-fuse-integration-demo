@@ -5,18 +5,31 @@
 :toc-placement: preamble
 :numbered:
 
-Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the more common use cases.
-
+Demos focused on integration scenarios between JBoss BPM Suite and JBoss Fuse.
 
 == Overview
+
+=== Features
 The following integration use cases are currently demonstrated in this project:
 
-. call a BPM process from a fuse camel route.
+. Invoke a BPM process from a fuse camel route.
+.. Includes the following BPMN2:
++
+image::images/customer-evaluation.png[]
++
+.. Also includes the following Camel route:
++
+image::images/camelroute.png[]
 
-There are two options available for using this demo; local and Docker.
 
+=== Lab Deployment Options
+There are two options available for using this demo:
 
-== Option 1 - Local Install
+. <<local>>
+. <<docker>>
+
+[[local]]
+== Local Install
 
 === Download and Install
 
@@ -65,6 +78,7 @@ A single of the `customer.evaluation` BPMN2 process is started.
 . In the BPM Suite 6 log file, there should be new messages similar to the following:
 +
 image::images/logfile.png[]
+
 === Execute *simpleRoute* project in JBoss Fuse
 
 ==== Start Fuse server and Fabric
@@ -110,7 +124,7 @@ This is required so that the maven plugin can login to fabric.
 mvn fabric8:deploy
 -----
 
-==== Create Container using *bpmsuitefuse* profile
+==== Create Fuse container using *bpmsuitefuse* profile
 . Login to Fuse management console at:  http://localhost:8181
 +
 Use the following credentials:  (u:admin/p:admin).
@@ -137,7 +151,8 @@ image::images/container.png[]
 +
 image::images/logfile.png[]
 
-== Option2: docker install
+[[docker]]
+== Docker install
 
 The following steps can be used to configure and run the demo in a docker container
 
@@ -221,6 +236,5 @@ See the tagged releases for the following versions of the product:
 
 [![Video Demo Run] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
 
-![Fuse Camel Route] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
 ![BPM Suite Process] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
 ![BPM Suite BAM] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
