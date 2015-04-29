@@ -47,8 +47,8 @@ For the purposes of this tutorial, this directory will be referred to as `$PROJE
 
 . Download the following from the JBoss Customer Portal
 * JBoss EAP (jboss-eap-6.4.0.zip)
-* BPM Suite (jboss-bpms-installer-6.0.3.GA-redhat-1.jar)
-* Fuse (jboss-fuse-full-6.1.0.redhat-379.zip)
+* BPM Suite (jboss-bpmsuite-6.1.0.GA-installer.jar)
+* Fuse (jboss-fuse-full-6.1.1.redhat-412.zip)
 . Move downloads to $PROJECT_HOME/installs directory
 . Ensure all files are executable:
 .. cd $PROJECT_HOME
@@ -236,5 +236,4 @@ See the tagged releases for the following versions of the product:
 
 [![Video Demo Run] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png)](http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run)
 
-![BPM Suite Process] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
 ![BPM Suite BAM] (https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
