@@ -123,7 +123,7 @@ fi
 
 echo "  - setting up demo projects..."
 echo
-#cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
+cp -r $SUPPORT_DIR/bpm-suite-demo-niogit $SERVER_BIN/.niogit
 
 echo "  - making sure standalone.sh for server is executable..."
 echo
