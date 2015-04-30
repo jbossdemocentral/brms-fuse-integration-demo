@@ -1,7 +1,7 @@
 #!/bin/sh 
 DEMO="JBoss BRMS & Fuse Integration Demo"
 AUTHORS="Christina Lin, Andrew Block,"
-AUTHORS2="Kenny Peeples, Eric D. Schabell"
+AUTHORS2="Jeff Bride, Eric D. Schabell"
 PROJECT="git@github.com:jbossdemocentral/brms-fuse-integration-demo.git"
 JBOSS_HOME=./target/jboss-eap-6.4
 FUSE_HOME=./target/jboss-fuse-6.1.1.redhat-412
@@ -24,9 +24,6 @@ FUSE_VERSION=6.1.1
 # wipe screen.
 clear 
 
-# add executeable in installs
-chmod +x installs/*.zip
-
 echo
 echo "#########################################################################"
 echo "##                                                                     ##"   
@@ -42,14 +39,18 @@ echo "##                                                                     ##"
 echo "##                                                                     ##"   
 echo "##  brought to you by,                                                 ##"   
 echo "##                     ${AUTHORS}                    ##"
-echo "##                       ${AUTHORS2}               ##"
+echo "##                          ${AUTHORS2}               ##"
 echo "##                                                                     ##"   
 echo "##  ${PROJECT}     ##"
 echo "##                                                                     ##"   
 echo "#########################################################################"
 echo
+exit
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
+
+# add executeable in installs
+chmod +x installs/*.zip
 
 # make some checks first before proceeding.	
 if [ -r $SRC_DIR/$EAP ] || [ -L $SRC_DIR/$EAP ]; then
