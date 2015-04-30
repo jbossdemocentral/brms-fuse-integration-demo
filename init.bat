@@ -4,11 +4,11 @@ setlocal
 set PROJECT_HOME=%~dp0
 set DEMO=JBoss BRMS & Fuse Integration Demo
 set AUTHORS=Christina Lin, Andrew Block,
-set AUTHORS2=Kenny Peeples, Eric D. Schabell
+set AUTHORS2=Jeff Bride, Eric D. Schabell
 set PROJECT=git@github.com:jbossdemocentral/brms-fuse-integration-demo.git
 set TARGET_DIR=%PROJECT_HOME%target
-set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.1
-set FUSE_HOME=%PROJECT_HOME%target\jboss-fuse-6.1.0.redhat-379
+set JBOSS_HOME=%PROJECT_HOME%target\jboss-eap-6.4
+set FUSE_HOME=%PROJECT_HOME%target\jboss-fuse-6.1.1.redhat-412
 set FUSE_BIN=%FUSE_HOME%\bin
 set SERVER_DIR=%JBOSS_HOME%\standalone\deployments\
 set SERVER_CONF=%JBOSS_HOME%\standalone\configuration\
@@ -17,10 +17,11 @@ set SERVER_BIN=%JBOSS_HOME%\bin
 set SRC_DIR=%PROJECT_HOME%installs
 set PRJ_DIR=%PROJECT_HOME%projects\brms-fuse-integration
 set SUPPORT_DIR=%PROJECT_HOME%\support
-set FUSE=jboss-fuse-full-6.1.0.redhat-379.zip
-set BPMS=jboss-bpms-installer-6.0.3.GA-redhat-1.jar
-set BPM_VERSION=6.0.3
-set FUSE_VERSION=6.1.0
+set FUSE=jboss-fuse-full-6.1.1.redhat-412.zip
+set BPMS=jboss-bpmsuite-6.1.0.GA-installer.jar
+set EAP=jboss-eap-6.4.0-installer.jar
+set BPM_VERSION=6.1
+set FUSE_VERSION=6.1.1
 
 REM wipe screen.
 cls 
@@ -40,7 +41,7 @@ echo ##                                                                     ##
 echo ##                                                                     ##   
 echo ##  brought to you by,                                                 ##   
 echo ##                     %AUTHORS%                     ##
-echo ##                        %AUTHORS2%               ##
+echo ##                           %AUTHORS2%               ##
 echo ##                                                                     ##   
 echo ##  %PROJECT%            ##
 echo ##                                                                     ##   
@@ -55,14 +56,14 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 REM # make some checks first before proceeding. 
-if exist %SRC_DIR%\%FUSE% (
-	echo Fuse sources are present...
-	echo.
+if exist %SRC_DIR%\%EAP% (
+        echo Product sources are present...
+        echo.
 ) else (
-	echo Need to download %FUSE% package from the Customer Support Portal
-	echo and place it in the %SRC_DIR% directory to proceed...
-	echo.
-	GOTO :EOF
+        echo Need to download %EAP% package from the Customer Support Portal
+        echo and place it in the %SRC_DIR% directory to proceed...
+        echo.
+        GOTO :EOF
 )
 
 if exist %SRC_DIR%\%BPMS% (
@@ -75,15 +76,38 @@ if exist %SRC_DIR%\%BPMS% (
 	GOTO :EOF
 )
 
-REM Move the old JBoss instance, if it exists, to the OLD position.
+if exist %SRC_DIR%\%FUSE% (
+	echo Fuse sources are present...
+	echo.
+) else (
+	echo Need to download %FUSE% package from the Customer Support Portal
+	echo and place it in the %SRC_DIR% directory to proceed...
+	echo.
+	GOTO :EOF
+)
+
+REM Remove the old JBoss instance, if it exists.
 if exist %TARGET_DIR% (
          echo - existing JBoss product install removed...
          echo.
          rmdir /s /q %TARGET_DIR%
  )
 
-REM Run installer.
-echo Product installer running now...
+REM Run installers.
+echo EAP installer running now...
+echo.
+call java -jar %SRC_DIR%/%EAP% %SUPPORT_DIR%\installation-eap -variablefile %SUPPORT_DIR%\installation-eap.variables
+
+
+if not "%ERRORLEVEL%" == "0" (
+  echo.
+	echo Error Occurred During JBoss EAP Installation!
+	echo.
+	GOTO :EOF
+)
+
+echo.
+echo JBoss BPM Suite installer running now...
 echo.
 call java -jar %SRC_DIR%/%BPMS% %SUPPORT_DIR%\installation-bpms -variablefile %SUPPORT_DIR%\installation-bpms.variables
 
@@ -93,6 +117,9 @@ if not "%ERRORLEVEL%" == "0" (
 	GOTO :EOF
 )
 
+echo.
+echo JBoss Fuse install running now...
+echo.
 if exist %PROJECT_HOME%\target (
 	REM Unzip the JBoss FUSE instance.
 	echo.
@@ -117,6 +144,10 @@ xcopy /Y /Q /S "%SUPPORT_DIR%\bpm-suite-demo-niogit" "%SERVER_BIN%\.niogit\"
 echo   - setting up standalone.xml configuration adjustments...
 echo.
 xcopy /Y /Q "%SUPPORT_DIR%\standalone.xml" "%SERVER_CONF%"
+
+echo - setup email task notification users...
+echo.
+xcopy "%SUPPORT_DIR%\userinfo.properties" "%SERVER_DIR%\business-central.war\WEB-INF\classes\"
 
 echo   - enabling demo accounts logins in users.properties file...
 echo.
