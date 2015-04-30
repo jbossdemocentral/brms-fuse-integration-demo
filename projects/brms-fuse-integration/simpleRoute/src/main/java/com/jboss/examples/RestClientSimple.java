@@ -20,7 +20,7 @@ public class RestClientSimple {
     private static final String DEPLOYMENT_ID = "customer:evaluation:1.0";
     private static final String PROCESS_DEF_ID = "customer.evaluation";
     
-    private static String username = "erics";
+    private static String username = "bpmsAdmin";
     private static String password = "bpmsuite1!";
     private static AuthenticationType type = AuthenticationType.FORM_BASED;
 
