@@ -6,7 +6,7 @@ Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the 
 
 There are two options available to you for using this demo; local and Docker.
 
-Extended documentation available in online [README]().
+Extended documentation available in ADOC format: [README](https://github.com/jbossdemocentral/brms-fuse-integration-demo/blob/master/docs/README.adoc).
 
 Option 1 - Install on your machine
 ----------------------------------
