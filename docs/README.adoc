@@ -15,11 +15,11 @@ The following integration use cases are currently demonstrated in this project:
 . Invoke a BPM process from a fuse camel route.
 .. Includes the following BPMN2:
 +
-image::images/customer-evaluation.png[]
+image::adoc-images/customer-evaluation.png[]
 +
 .. Also includes the following Camel route:
 +
-image::images/camelroute.png[]
+image::adoc-images/camelroute.png[]
 
 
 === Lab Deployment Options
@@ -72,14 +72,14 @@ Use the following credentials to authenticate:  (u:bpmsAdmin/p:bpmsuite1!).
 +
 You'll notice that in the `customer` repository is an existing project called: `customer-evaluation`.
 +
-image::images/builddeploy.png[]
+image::adoc-images/builddeploy.png[]
 . Click `Open Project Editor`
 . In the tob toolbar of the `Project` panel, select `Build and Deploy` from the `Build` dropdown.
 . In the top toolbar of the `BPM Console`, select `Deploy -> Process Deployments`
 +
 You should see a new Deployment Unit of: `customer:evaluation:1.0`
 +
-image::images/deployment.png[]
+image::adoc-images/deployment.png[]
 
 === Execute *simpleRoute* project at command line
 In this section, the camel based `simpleRoute` project will be executed at the command line.
@@ -92,7 +92,7 @@ A single instnace of the `customer.evaluation` BPMN2 process is started.
 . mvn camel:run
 . In the BPM Suite 6 log file, there should be new messages similar to the following:
 +
-image::images/logfile.png[]
+image::adoc-images/logfile.png[]
 
 === Execute *simpleRoute* project in JBoss Fuse
 
@@ -148,10 +148,10 @@ Use the following credentials:  (u:admin/p:admin).
 .. In the top toolbar of the `Fuse Management Console`, navigate to: `Runtime -> Containers`
 .. Click the `Create` button at the right side of the panel:
 +
-image::images/createbutton.png[]
+image::adoc-images/createbutton.png[]
 .. The `Create New Container` panel appears.
 +
-image::images/container.png[]
+image::adoc-images/container.png[]
 .. As the value of the *Container Name* text box, enter:  `c1`
 .. In the `Profiles` section, expand the `Uncategorized` folder and select `bpmsuitefuse`
 .. Click the green `Create and start container` button
@@ -164,7 +164,7 @@ image::images/container.png[]
 `cp support/data/message.xml target/jboss-fuse-6.1.1.redhat-412/instances/c1/src/data`
 .. Similar to when the *simpleroute* project was executed from the command line, the following should appear in the BPM Suite 6 log file:
 +
-image::images/logfile.png[]
+image::adoc-images/logfile.png[]
 
 [[docker]]
 == Docker install
@@ -251,6 +251,6 @@ See the tagged releases for the following versions of the product:
 - v1.0 is BRMS 5.3.1 deployable, running on JBoss EAP 6.1.0, and JBoss Fuse Full 6.0.0.
 
 
-image::https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/video-demo-run.png[http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run]
+image::https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-adoc-images/video-demo-run.png[http://vimeo.com/ericschabell/bpmsuite-fuse-integraiton-demo-run]
 
-image::https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png[]
+image::https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-adoc-images/bam-dashboard.png[]
