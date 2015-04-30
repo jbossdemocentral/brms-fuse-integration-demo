@@ -45,7 +45,6 @@ echo "##  ${PROJECT}     ##"
 echo "##                                                                     ##"   
 echo "#########################################################################"
 echo
-exit
 
 command -v mvn -q >/dev/null 2>&1 || { echo >&2 "Maven is required but not installed yet... aborting."; exit 1; }
 
