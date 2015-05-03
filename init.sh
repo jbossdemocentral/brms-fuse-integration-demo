@@ -168,7 +168,7 @@ echo "=        $SERVER_BIN/standalone.sh                                        
 echo "=                                                                                         ="
 echo "=    - login, build and deploy JBoss BPM Suite process project at:                        ="
 echo "=                                                                                         ="
-echo "=        http://localhost:8080/business-central (u:bpmsAdmin/p:bpmsuite1!)                    ="
+echo "=        http://localhost:8080/business-central (u:erics / p:bpmsuite1!)                  ="
 echo "=                                                                                         ="
 echo "=  Deploying the camel route in JBoss Fuse as follows:                                    ="
 echo "=                                                                                         ="

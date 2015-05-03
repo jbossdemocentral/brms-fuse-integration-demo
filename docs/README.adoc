@@ -67,7 +67,7 @@ In this section, let's build and deploy the KIE project included in this `custom
 .. execute:  ./bin/standalone.sh
 . log into the `BPM Console` at `http://localhost:8080/business-central`
 +
-Use the following credentials to authenticate:  (u:bpmsAdmin/p:bpmsuite1!).
+Use the following credentials to authenticate:  (u:erics / p:bpmsuite1!).
 . Navigate to `Authoring -> Project Authoring`
 +
 You'll notice that in the `customer` repository is an existing project called: `customer-evaluation`.
