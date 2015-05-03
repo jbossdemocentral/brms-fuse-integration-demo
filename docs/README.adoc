@@ -46,7 +46,7 @@ Once cloned, a new directory called `brms-fuse-integration-demo` should appear i
 For the purposes of this tutorial, this directory will be referred to as `$PROJECT_HOME` .
 
 . Download the following from the JBoss Customer Portal
-* JBoss EAP (jboss-eap-6.4.0.zip)
+* JBoss EAP (jboss-eap-6.4.0-installer.jar)
 * BPM Suite (jboss-bpmsuite-6.1.0.GA-installer.jar)
 * Fuse (jboss-fuse-full-6.1.1.redhat-412.zip)
 . Move downloads to $PROJECT_HOME/installs directory
