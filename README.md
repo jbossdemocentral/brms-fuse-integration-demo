@@ -4,7 +4,7 @@ Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a few of the 
 
   * call a BPM process from a fuse camel route.
 
-There are two options available to you for using this demo; local and Docker.
+There are two options available to you for using this demo; local and containerized.
 
 Extended documentation available in ADOC format: [README](https://github.com/jbossdemocentral/brms-fuse-integration-demo/blob/master/docs/README.adoc).
 
@@ -57,9 +57,9 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 12. Enjoy the demo!
 
 
-Option 2 - Generate docker install
-----------------------------------
-The following steps can be used to configure and run the demo in a docker container
+Option 2 - Generate containerized install
+-----------------------------------------
+The following steps can be used to configure and run the demo in a container
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip). 
 
@@ -103,7 +103,7 @@ The following steps can be used to configure and run the demo in a docker contai
 
 12. Enjoy the demo!
   
-Additional information can be found in the jbossdemocentral docker [developer repository](https://github.com/jbossdemocentral/docker-developer)
+Additional information can be found in the jbossdemocentral containers [developer repository](https://github.com/jbossdemocentral/docker-developer)
 
 
 Coming soon
@@ -131,7 +131,7 @@ See the tagged releases for the following versions of the product:
 
 - v2.4 JBoss BPM Suite 6.1 with JBoss Fuse Full 6.1.1 and demo installed.
 
-- v2.3 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0 and optional docker installation. 
+- v2.3 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0 and optional containerized installation. 
 
 - v2.2 moved to JBoss Demo Central, with updated windows init.bat support.
 

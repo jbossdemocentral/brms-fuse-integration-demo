@@ -26,7 +26,7 @@ image::adoc-images/camelroute.png[]
 There are two options available for using this demo:
 
 . <<local>>
-. <<docker>>
+. <<containerized>>
 
 [[local]]
 == Local Install
@@ -166,10 +166,10 @@ image::adoc-images/container.png[]
 +
 image::adoc-images/logfile.png[]
 
-[[docker]]
-== Docker install
+[[containerized]]
+== Containerized install
 
-The following steps can be used to configure and run the demo in a docker container
+The following steps can be used to configure and run the demo in a container
 
 1. [Download and unzip.](https://github.com/jbossdemocentral/brms-fuse-integration-demo/archive/master.zip).
 
@@ -214,7 +214,7 @@ The following steps can be used to configure and run the demo in a docker contai
 
 12. Enjoy the demo!
 
-Additional information can be found in the jbossdemocentral docker [developer repository](https://github.com/jbossdemocentral/docker-developer)
+Additional information can be found in the jbossdemocentral containers [developer repository](https://github.com/jbossdemocentral/docker-developer)
 
 
 Coming soon
