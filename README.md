@@ -34,25 +34,14 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
      </servers> 
      ```
 
-6. Start Fuse Server and start up fabric in fuse console: 
 
-     ```
-     fabric:create --wait-for-provisioning 
-     ```
+6. Login to Fuse management console at:  http://localhost:8181    (u:admin/p:admin).
 
-7. Deploy simple route from projects/brms-fuse-integration/simpleRoute:
+7. Connect to root container with login presented by console  (u:admin/p:admin)   
 
-     ```
-     mvn fabric8:deploy
-     ```
+8. Create container name fusecon and add demo-bpmsuitefuseintegration profile (see screenshot below)
 
-8. Login to Fuse management console at:  http://localhost:8181    (u:admin/p:admin).
-
-9. Connect to root container with login presented by console  (u:admin/p:admin)   
-
-10. Create container name c1 and add bpmsuitefuse profile (see screenshot below)
-
-11. Trigger camel route by placing support/data/message.xml files into target/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see screenshot below)
+11. Trigger camel route by placing support/data/message.xml files into target/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
 
 12. Enjoy the demo!
 
@@ -89,17 +78,15 @@ The following steps can be used to configure and run the demo in a container
      fabric:create --wait-for-provisioning 
      ```
 
-9. Within the running container, deploy simple route from /opt/jboss/projects/brms-fuse-integration/simpleRoute:
+9. Within the running container, deploy simple route from /opt/jboss/projects/brms-fuse-integration/bpmsuite-fuse-integration:
 
      ```
      mvn fabric8:deploy
      ``` 
 	
-	1. When prompted to update the settings.xml file, select **y** and enter admin/admin for the user name and password
-
 10. Create container name c1 and add bpmsuitefuse profile (see screenshot below)
 
-11. Trigger camel route by placing /opt/jboss/support/data/message.xml file into /opt/jboss/fuse/jboss-fuse-6.1.0.redhat-379/instances/c1/src/data folder (see screenshot below)
+11. Trigger camel route by placing /opt/jboss/support/data/customerrequest-1.xml file or customerrequest-2.xml file into /opt/jboss/fuse/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
 
 12. Enjoy the demo!
   
@@ -129,6 +116,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v2.5 JBoss Fuse 6.2, also passing in parameter to process
+
 - v2.4 JBoss BPM Suite 6.1 with JBoss Fuse Full 6.1.1 and demo installed.
 
 - v2.3 is JBoss BPM Suite 6.0.3 installer, JBoss Fuse Full 6.1.0 and optional containerized installation. 
@@ -150,6 +139,8 @@ See the tagged releases for the following versions of the product:
 ![Fuse Camel Route](https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/camelroute.png)
 
 ![BPM Suite Process](https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/customer-evaluation.png)
+
+![BPM Suite BAM](https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/data.png)
 
 ![BPM Suite BAM](https://raw.githubusercontent.com/jbossdemocentral/brms-fuse-integration-demo/master/docs/demo-images/bam-dashboard.png)
 
