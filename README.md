@@ -41,7 +41,7 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 8. Create container name fusecon and add demo-bpmsuitefuseintegration profile (see screenshot below)
 
-11. Trigger camel route by placing support/data/message.xml files into target/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
+11. Trigger camel route by placing /opt/jboss/support/data/customerrequest-1.xml file or customerrequest-2.xml file into /opt/jboss/fuse/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
 
 12. Enjoy the demo!
 
@@ -84,7 +84,7 @@ The following steps can be used to configure and run the demo in a container
      mvn fabric8:deploy
      ``` 
 	
-10. Create container name c1 and add bpmsuitefuse profile (see screenshot below)
+10. Create container name fusecon and add demo-bpmsuitefuseintegration profile (see screenshot below)
 
 11. Trigger camel route by placing /opt/jboss/support/data/customerrequest-1.xml file or customerrequest-2.xml file into /opt/jboss/fuse/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
 
