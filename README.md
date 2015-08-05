@@ -34,7 +34,6 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
      </servers> 
      ```
 
-
 6. Login to Fuse management console at:  http://localhost:8181    (u:admin/p:admin).
 
 7. Connect to root container with login presented by console  (u:admin/p:admin)   
@@ -116,7 +115,7 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
-- v2.5 JBoss Fuse 6.2, also passing in parameter to process
+- v2.5 JBoss BPM Suite 6.1 with JBoss Fuse 6.2 and demo installed, now passing in data to process.
 
 - v2.4 JBoss BPM Suite 6.1 with JBoss Fuse Full 6.1.1 and demo installed.
 

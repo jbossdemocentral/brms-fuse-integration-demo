@@ -10,4 +10,4 @@ Ensure that this file is executable by running:
 
 chmod +x <path-to-project>/installs/jboss-eap-6.4.0-installer.jar
 chmod +x <path-to-project>/installs/jboss-bpmsuite-6.1.0.GA-installer.jar
-chmod +x <path-to-project>/installs/jboss-fuse-full-6.2.0.redhat-133.zi
+chmod +x <path-to-project>/installs/jboss-fuse-full-6.2.0.redhat-133.zip
