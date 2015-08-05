@@ -74,7 +74,6 @@ else
 		exit
 fi
 
-
 # add executeable in installs
 chmod +x installs/*.zip
 
@@ -139,7 +138,7 @@ if [ $? -ne 0 ]; then
 	exit
 fi
 
-
+echo
 echo "  - enabling demo accounts role setup in application-roles.properties file..."
 echo
 cp $SUPPORT_DIR/application-roles.properties $SERVER_CONF
@@ -160,15 +159,9 @@ echo "  - setup email task notification users..."
 echo
 cp $SUPPORT_DIR/userinfo.properties $SERVER_DIR/business-central.war/WEB-INF/classes/
 
-
-
-
-
-
 #Start Fuse installation
 if [ -x target ]; then
   # Unzip the JBoss FUSE instance.
-	echo
   echo Installing JBoss FUSE $FUSE_VERSION
   echo
   unzip -q -d target $SRC_DIR/$FUSE_ZIP
@@ -179,26 +172,20 @@ else
 	exit
 fi
 
-
-
 #SETUP and INSTALL FUSE services
 echo "  - enabling demo accounts logins in users.properties file..."
 echo
 cp $SUPPORT_DIR/fuse/users.properties $FUSE_SERVER_CONF
 
-
 echo "  - making sure 'FUSE' for server is executable..."
 echo
 chmod u+x $FUSE_HOME/bin/start
 
-
-
-echo "  - Start up Fuse in the background"
+echo "  - Start up Fuse in the background..."
 echo
 sh $FUSE_SERVER_BIN/start
 
-
-echo "  - Create Fabric in Fuse"
+echo "  - Create Fabric in Fuse..."
 echo
 sh $FUSE_SERVER_BIN/client -r 3 -d 10 -u admin -p admin 'fabric:create'
      
@@ -206,7 +193,9 @@ sleep 15
 
 COUNTER=5
 #===Test if the fabric is ready=====================================
-echo "  - Testing fabric,retry when not ready"
+echo
+echo "  - Testing fabric, retry when not ready..."
+echo
 while true; do
     if [ $(sh $FUSE_SERVER_BIN/client 'fabric:status'| grep "100%" | wc -l ) -ge 3 ]; then
         break
@@ -222,16 +211,15 @@ done
 #===================================================================
 
 cd $FUSE_PROJECT     
-
-
-echo "Start compile and deploy Fuse and BPM Suite demo project to fuse"
+echo
+echo "Start compile and deploy Fuse and BPM Suite demo project to fuse..."
 echo         
 mvn fabric8:deploy 
 
 cd ../.. 
 
-
-echo "  - stopping any running fuse instances"
+echo
+echo "  - stopping any running fuse instances..."
 echo
 jps -lm | grep karaf | grep -v grep | awk '{print $1}' | xargs kill -KILL
 
