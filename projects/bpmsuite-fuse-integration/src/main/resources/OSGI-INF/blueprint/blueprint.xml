@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/blueprint"
+       xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+       xmlns:http="http://cxf.apache.org/transports/http/configuration"
+       xmlns:sec="http://cxf.apache.org/configuration/security"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+       http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd
+       http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+       http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+       http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd">
+
+  
+  <cxf:rsClient id="rsClient" address="http://localhost:8080/business-central/rest/runtime/customer:evaluation:1.0/process/customer.evaluation/start"
+   serviceClass="org.blogdemo.endpoint.CustEval"
+   username="erics"
+   password="bpmsuite1!"
+   loggingFeatureEnabled="true" >
+   	<cxf:providers>
+   		<bean class="org.apache.cxf.jaxrs.provider.JAXBElementProvider"/>
+	</cxf:providers>
+	<cxf:headers>
+   		<cxf:entry key="Charset" value="UTF-8"/>
+	</cxf:headers>
+   </cxf:rsClient>
+  
+  <bean id="custEvalList" class="java.util.LinkedHashMap" />
+   
+  <camelContext xmlns="http://camel.apache.org/schema/blueprint">
+  <endpoint uri="dozer:bpmsuiteResponse?sourceModel=bpmsuiteresponse.ProcessInstanceResponse&amp;targetModel=org.blogdemo.endpoint.BPMSuiteResponse&amp;unmarshalId=bpmsuiteresponse&amp;mappingFile=transformation.xml" id="bpmsuiteResponse"/>
+  <dataFormats>
+    <jaxb contextPath="customer.evaluation" prettyPrint="true" id="requestJaxb"/>
+    <jaxb contextPath="bpmsuiteresponse" id="bpmsuiteresponse"/>
+  </dataFormats>
+  <route id="timerToLog">
+    <from uri="file://customerData?delete=true"/>
+    <bean ref="custEvalList" method="clear()"/>
+    <log message="The message from File ${body}"/>
+    <setHeader headerName="tempparam">
+        <xpath resultType="java.lang.String">/customerrequest/requestId/text()</xpath>
+    </setHeader>
+    <bean ref="custEvalList" method="put('map_requestId','${headers.tempparam}')"/>
+    <setHeader headerName="tempparam">
+        <xpath resultType="java.lang.String">/customerrequest/personId/text()</xpath>
+    </setHeader>
+    <bean ref="custEvalList" method="put('map_personId','${headers.tempparam}')"/>
+    <setHeader headerName="tempparam">
+        <xpath resultType="java.lang.String">/customerrequest/personName/text()</xpath>
+    </setHeader>
+    <bean ref="custEvalList" method="put('map_personName','${headers.tempparam}')"/>
+    <setHeader headerName="tempparam">
+        <xpath resultType="java.lang.Integer">/customerrequest/age/text()</xpath>
+    </setHeader>
+    <bean ref="custEvalList" method="put('map_age','${headers.tempparam}i')"/>
+    <setHeader headerName="tempparam">
+        <xpath resultType="java.lang.Integer">/customerrequest/amount/text()</xpath>
+    </setHeader>
+    <bean ref="custEvalList" method="put('map_amount','${headers.tempparam}i')"/>
+    <setHeader headerName="CamelCxfRsQueryMap">
+      <simple>${ref:custEvalList}</simple>
+    </setHeader>
+    <to uri="cxfrs:bean:rsClient?exchangePattern=InOut"/>
+    <convertBodyTo type="java.lang.String"/>
+    <log message="The message from BPM Suite ${body}"/>
+    <to ref="bpmsuiteResponse"/>
+    <choice>
+      <when>
+        <simple>${body.status} == 'SUCCESS'</simple>
+        <log message="PROCESS OK!"/>
+      </when>
+      <otherwise>
+        <log message="FAILED"/>
+      </otherwise>
+    </choice>
+  </route>
+</camelContext>
+
+</blueprint>

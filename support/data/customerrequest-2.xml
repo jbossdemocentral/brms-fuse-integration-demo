@@ -1,0 +1,7 @@
+<customerrequest>
+	<requestId>A001</requestId>
+	<personId>erics</personId>
+	<personName>Eric D. Schabell</personName>
+	<age>15</age>
+	<amount>100</amount>
+</customerrequest>

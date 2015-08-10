@@ -1,0 +1,7 @@
+<customerrequest>
+	<requestId>C001</requestId>
+	<personId>clin</personId>
+	<personName>Christina Lin</personName>
+	<age>25</age>
+	<amount>888</amount>
+</customerrequest>
