@@ -8,6 +8,7 @@ There are two options available to you for using this demo; local and containeri
 
 Extended documentation available in ADOC format: [README](https://github.com/jbossdemocentral/brms-fuse-integration-demo/blob/master/docs/README.adoc).
 
+
 Option 1 - Install on your machine
 ----------------------------------
 See Quick Start Guide in project as ODT and PDF for details on installation. For those that can't wait:
@@ -40,7 +41,7 @@ See Quick Start Guide in project as ODT and PDF for details on installation. For
 
 8. Create container name fusecon and add demo-bpmsuitefuseintegration profile (see screenshot below)
 
-11. Trigger camel route by placing /opt/jboss/support/data/customerrequest-1.xml file or customerrequest-2.xml file into /opt/jboss/fuse/jboss-fuse-6.2.0.redhat-133/instances/fusecon/customerData folder (see screenshot below)
+11. Trigger camel route by placing /opt/jboss/support/data/customerrequest-1.xml file or customerrequest-2.xml file into /opt/jboss/fuse/jboss-fuse-6.2.0.redhat-133/instances/c1/customerData folder (see screenshot below)
 
 12. Enjoy the demo!
 

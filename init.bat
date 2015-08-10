@@ -263,7 +263,7 @@ echo =                                                                          
 echo =   - trigger camel route by placing support/data/customerrequest-1.xml       =
 echo =     file into the following folder:                                         =
 echo =                                                                             =
-echo =       %FUSE_HOME%\instances\c1\src\customerData
+echo =       %FUSE_HOME%\instances\c1\customerData
 echo =                                                                             =
 echo =                                                                             =
 echo =  !DEMO! Setup Complete.                         =
