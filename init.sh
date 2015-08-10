@@ -243,7 +243,7 @@ echo "=      login to the fabric. fabric8.upload.repoadminadmin                 
 echo "=                                                                                         ="
 echo "=    - start the JBoss Fuse with:                                                         ="
 echo "=                                                                                         ="
-echo "=        $FUSE_BIN/fuse                                    ="
+echo "=        $FUSE_SERVER_BIN/fuse                                    ="
 echo "=                                                                                         ="
 echo "=    - start up fabric in fuse console: fabric:create --wait-for-provisioning             ="
 echo "=                                                                                         ="
