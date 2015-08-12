@@ -239,7 +239,7 @@ echo "=  Deploying the camel route in JBoss Fuse as follows:                    
 echo "=                                                                                         ="
 echo "=    - add fabric server passwords for Maven Plugin to your ~/.m2/settings.xml            =" 
 echo "=      file the fabric server's user and password so that the maven plugin can            ="
-echo "=      login to the fabric. fabric8.upload.repoadminadmin                                 ="
+echo "=      login to the fabric. fabric8.upload.repo  admin  admin                             ="
 echo "=                                                                                         ="
 echo "=    - start the JBoss Fuse with:                                                         ="
 echo "=                                                                                         ="
