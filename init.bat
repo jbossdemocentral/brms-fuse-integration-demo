@@ -13,11 +13,11 @@ set SERVER_BIN=%JBOSS_HOME%\bin
 set SRC_DIR=%PROJECT_HOME%installs
 set PRJ_DIR=%PROJECT_HOME%projects\bpmsuite-fuse-integration
 set SUPPORT_DIR=%PROJECT_HOME%\support
-set EAP=jboss-eap-6.4.0-installer.jar
-set BPMS=jboss-bpmsuite-6.1.0.GA-installer.jar
+set EAP=jboss-eap-6.4.3-installer.jar
+set BPMS=jboss-bpmsuite-6.2.0.GA-installer.jar
 set JBOSS_CONFIG=standalone.xml
-set EAP_VERSION=6.4.0
-set BPM_VERSION=6.1.0
+set EAP_VERSION=6.4.3
+set BPM_VERSION=6.2.0
 
 
 REM Fuse env

@@ -11,11 +11,11 @@ SERVER_BIN=$JBOSS_HOME/bin
 SRC_DIR=./installs
 PRJ_DIR=./projects/brms-fuse-integration
 SUPPORT_DIR=./support
-EAP=jboss-eap-6.4.0-installer.jar
-BPMS=jboss-bpmsuite-6.1.0.GA-installer.jar
+EAP=jboss-eap-6.4.3-installer.jar
+BPMS=jboss-bpmsuite-6.2.0.GA-installer.jar
 JBOSS_CONFIG=standalone.xml
-EAP_VERSION=6.4.0
-BPM_VERSION=6.1.0
+EAP_VERSION=6.4.3
+BPM_VERSION=6.2.0
 
 #Fuse env 
 DEMO_HOME=./target
