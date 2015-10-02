@@ -8,7 +8,7 @@ process from a fuse camel route. Install options - local and containerized.",
   "published":true,
   "prerequisites":"Java 1.7, Maven 3.1.1 - 3.2.4 ",
   "targetProduct":"JBoss BPM Suite and JBoss Fuse",
-  "productVersion":"JBoss BPM Suite 6.1, JBoss Fuse 6.2.0",
+  "productVersion":"JBoss BPM Suite 6.2, JBoss Fuse 6.2.0",
   "technologies": ["JBoss BPM Suite","JBoss Fuse"],
   "links": [ 
     {
