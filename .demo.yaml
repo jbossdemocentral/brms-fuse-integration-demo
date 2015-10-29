@@ -1,5 +1,5 @@
 id: jbossdemocentral-bpms-fuse-integration
-title: Demo based on JBoss BPM Suite and JBoss Fuse products to highlight a common use case, call a BPM process from a fuse camel route. 
+title: JBoss BPM Suite and JBoss Fuse Integration Demo
 github_repo_url: https://github.com/jbossdemocentral/brms-fuse-integration-demo
 technologies:
   - RESTful
