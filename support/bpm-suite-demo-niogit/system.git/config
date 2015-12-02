@@ -4,3 +4,4 @@
 	filemode = true
 	bare = true
 	logallrefupdates = false
+	precomposeunicode = true
