@@ -118,6 +118,8 @@ Released versions
 -----------------
 See the tagged releases for the following versions of the product:
 
+- v2.6 JBoss BPM Suite 6.2.0, JBoss EAP 6.4.4, JBoss Fuse 6.2 and demo project installed.
+
 - v2.5 JBoss BPM Suite 6.1 with JBoss Fuse 6.2 and demo installed, now passing in data to process.
 
 - v2.4 JBoss BPM Suite 6.1 with JBoss Fuse Full 6.1.1 and demo installed.

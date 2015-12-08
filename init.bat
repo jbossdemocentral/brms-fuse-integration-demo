@@ -13,11 +13,12 @@ set SERVER_BIN=%JBOSS_HOME%\bin
 set SRC_DIR=%PROJECT_HOME%installs
 set PRJ_DIR=%PROJECT_HOME%projects\bpmsuite-fuse-integration
 set SUPPORT_DIR=%PROJECT_HOME%\support
+set BPMS=jboss-bpmsuite-6.2.0.GA-installer.jar
 set EAP=jboss-eap-6.4.0-installer.jar
-set BPMS=jboss-bpmsuite-6.1.0.GA-installer.jar
+set EAP_PATCH=jboss-eap-6.4.4-patch.zip
 set JBOSS_CONFIG=standalone.xml
-set EAP_VERSION=6.4.0
-set BPM_VERSION=6.1.0
+set EAP_VERSION=6.4.4
+set BPM_VERSION=6.2.0
 
 
 REM Fuse env
@@ -91,6 +92,16 @@ if exist %SRC_DIR%\%EAP% (
         GOTO :EOF
 )
 
+if exist %SRC_DIR%\%EAP_PATCH% (
+        echo Product patches are present...
+        echo.
+) else (
+        echo Need to download %EAP_PATCH% package from the Customer Support Portal
+        echo and place it in the %SRC_DIR% directory to proceed...
+        echo.
+        GOTO :EOF
+)
+
 if exist %SRC_DIR%\%BPMS% (
 	echo Prodct sources BPM are present...
 	echo.
@@ -129,6 +140,20 @@ call java -jar %SRC_DIR%/%EAP% %SUPPORT_DIR%\installation-eap -variablefile %SUP
 if not "%ERRORLEVEL%" == "0" (
   echo.
 	echo Error Occurred During JBoss EAP Installation!
+	echo.
+	GOTO :EOF
+)
+
+call set NOPAUSE=true
+
+echo.
+echo Applying JBoss EAP patch now...
+echo.
+call %JBOSS_HOME%/bin/jboss-cli.bat --command="patch apply %SRC_DIR%/%EAP_PATCH% --override-all"
+
+if not "%ERRORLEVEL%" == "0" (
+  echo.
+	echo Error Occurred During JBoss EAP Patch Installation!
 	echo.
 	GOTO :EOF
 )
